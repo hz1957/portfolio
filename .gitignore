@@ -127,3 +127,5 @@ dist
 
 # Vite
 dist
+build
+.vite
