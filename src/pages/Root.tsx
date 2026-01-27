@@ -1,9 +1,11 @@
 import { Outlet } from "react-router";
 import { Header } from "../components/Header";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export default function Root() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <ScrollToTop />
       <Header />
       <Outlet />
       <footer className="bg-slate-900 text-slate-400 py-8 mt-20">

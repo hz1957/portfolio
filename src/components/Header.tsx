@@ -20,51 +20,54 @@ export function Header() {
           <div className="flex gap-8">
             <Link
               to="/"
-              className={`transition-colors ${
-                isActive("/") && location.pathname === "/"
+              className={`transition-colors ${isActive("/") && location.pathname === "/"
                   ? "text-slate-900"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               Home
             </Link>
             <Link
               to="/experience"
-              className={`transition-colors ${
-                isActive("/experience")
+              className={`transition-colors ${isActive("/experience")
                   ? "text-slate-900"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               Experience
             </Link>
             <Link
               to="/projects"
-              className={`transition-colors ${
-                isActive("/projects")
+              className={`transition-colors ${isActive("/projects")
                   ? "text-slate-900"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               Projects
             </Link>
             <Link
               to="/publications"
-              className={`transition-colors ${
-                isActive("/publications")
+              className={`transition-colors ${isActive("/publications")
                   ? "text-slate-900"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               Publications
             </Link>
+            <a
+              href="https://hz1957.github.io/AI-Notes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              AI Notes
+            </a>
             <Link
               to="/contact"
-              className={`transition-colors ${
-                isActive("/contact")
+              className={`transition-colors ${isActive("/contact")
                   ? "text-slate-900"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               Contact
             </Link>
