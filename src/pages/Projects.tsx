@@ -27,48 +27,45 @@ export default function Projects() {
         title="Featured Project"
       >
         <FeaturedProjectCard
-          title="Agentic Data Analysis"
-          subtitle="Enterprise AI Data Analysis Platform"
-          description="An enterprise-grade data analysis and processing platform that deeply integrates Large Language Models with traditional data engineering. The platform provides intelligent Text-to-SQL Q&A and Text-to-ETL automation capabilities with drag-and-drop operator configuration (similar to Dify), offering a Figma Make-like interface where users can edit or chat."
+          title="Multi-Agent Data Pipeline Platform"
+          subtitle="Conversational ETL & SQL Generation with Agentic Orchestration"
+          description="A production dual-agent system where a conversational orchestrator routes multi-turn user intent and manages session state, while a LangGraph-based execution specialist generates and modifies data transformation pipelines via structured tool calls. Includes tiered agent memory (LLM-as-judge long-term memory + Agentic RAG via MCP tools) and a GRPO fine-tuned Qwen Coder 1.5B for self-correcting SQL generation."
           features={[
             {
-              title:
-                "1. Agentic ETL Orchestration Engine (LangGraph, Multi-agent System)",
+              title: "1. Multi-Agent Architecture & Stateful Orchestration",
               items: [
-                'Architecture Design: Built on LangGraph with a "Planner-Builder-Toolkit" layered architecture for intelligent agent systems',
-                "Multi-turn Reasoning: Implemented ReAct-based multi-turn planning (up to 30 iterations) to decompose complex natural language requirements into DAG structures with data filtering, column transformations, and multi-table joins",
-                "Stability Optimization: Introduced Watchdog mechanism to monitor DAG convergence, ensuring logical closure and executability; utilized dynamic System Prompt injection of current DAG state (Nodes & Aliases) to enhance model context awareness while saving tokens",
+                "Role Separation: Conversational orchestrator handles multi-turn intent classification (CHITCHAT / DATA_EXPERT / PLAN_RECALL / REFINEMENT / NEW_REQUEST), session state management, and remote production-state bootstrapping — keeping context continuity without user re-prompting",
+                "Execution Specialist: LangGraph-based ETL agent receives scoped payloads (refined instruction, relevant tables, prior plan) and generates or modifies pipelines via structured tool calls",
+                "Context Integrity: Execution-time data contracts via scoped artifact passing prevent stale context from polluting downstream planning; semantic alignment with remote production state on every run",
               ],
             },
             {
-              title:
-                "2. Enterprise Text-to-SQL System (RAG, Domain Adaptation)",
+              title: "2. Tool-Call Agentic Planning with Self-Correction",
               items: [
-                "Semantic Router: Designed a domain knowledge-based (CDISC/SDTM standards) Router module to handle schema explosion in enterprise databases, accurately retrieving relevant table structures based on user intent and conversation history, significantly improving SQL generation accuracy and reducing token consumption",
-                "Context Awareness: Implemented full-chain context management where Router analyzes complete conversation history, enabling handling of complex context-dependent instructions like 'add filter conditions' or 'modify join tables'",
-                "Robustness Engineering: Resolved UTF8MB4 encoding issues in multilingual (Chinese/special characters) environments and implemented regex-based automated error correction and formatting for medical terminology",
+                "Intent-Classified Tool Scoping: Modification intent classifier routes between PURE_MODIFICATION (node-level updates) and STRUCTURE_CHANGE (DAG rewiring), selecting the appropriate tool set for each mode",
+                "Feedback-Driven Iteration: Agent applies incremental changes via tool calls, receives structured execution feedback, and converges toward a valid plan — with Soft/Hard Watchdogs enforcing DAG convergence",
+                "Graceful Degradation: Automatic full-replan fallback (Replan) and NoOp fallback when modification produces no valid change — ensuring the system never silently produces inconsistent output",
               ],
             },
             {
-              title:
-                "3. Full-stack Interaction & State Management (WebSocket)",
+              title: "3. Agent Memory & Tiered RAG",
               items: [
-                "Immersive Interaction: Developed React + WebSocket streaming conversation interface with ChatGPT-like typewriter effects",
-                "Session Rollback (Time-travel): Innovatively implemented conversation rollback feature allowing users to reset to any historical node, with automatic cascading deletion of related intermediate Artifacts (ETL plans, table selections), greatly enhancing fault tolerance in complex task planning",
-                "Visual Feedback: Integrated ECharts auto-chart generation and Table Cards real-time feedback within conversation flow, improving system interpretability",
+                "Three-Tier Context: Full short-term windowed history + LLM-as-judge long-term memory (written to persistent skill files, retrieved via one-shot RAG) + domain knowledge corpus",
+                "MCP-Wrapped Traditional RAG: Fast retrieval path using BM25 + vector similarity + reranker, exposed as MCP tools callable by the agent",
+                "Agentic RAG Fallback: When traditional RAG is insufficient, the agent self-generates search queries, calls retrieval tools (Grep, file scan, terminal), and iterates in a ReAct loop until context sufficiency is confirmed",
               ],
             },
           ]}
           techStack={[
-            "Agentic AI",
-            "Post Training",
+            "Multi-Agent",
+            "LangGraph",
+            "RLHF / GRPO",
+            "Agentic RAG",
+            "MCP",
             "Python",
             "FastAPI",
-            "LangChain",
-            "LangGraph",
-            "DeepSeek",
+            "SGLang",
             "MySQL",
-            "Neo4j",
             "Redis",
             "React",
             "WebSocket",
@@ -85,7 +82,7 @@ export default function Projects() {
       >
         <div className="grid md:grid-cols-2 gap-6">
           <ProjectCard
-            title="PV Mapping System"
+            title="Clinical Data Mapping System"
             description="Pharmacovigilance data mapping system for drug safety monitoring and adverse event reporting"
             tags={[
               "React",

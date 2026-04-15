@@ -73,7 +73,7 @@ export default function Contact() {
             <div className="space-y-3 text-sm text-slate-700">
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>
-                AI/LLM Development & Multi-agent Systems
+                AI Development & Multi-agent Systems
               </p>
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>
@@ -81,7 +81,7 @@ export default function Contact() {
               </p>
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>
-                Full-Stack AI Product Development
+                LLM Inference / Training
               </p>
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>

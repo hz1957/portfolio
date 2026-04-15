@@ -27,7 +27,7 @@ export default function Home() {
               Hello, I'm Haoming
             </h1>
             <p className="text-xl text-slate-100 max-w-2xl mx-auto drop-shadow-md">
-              AI Developer & Biostatistician | Building Intelligent Systems with Agentic AI
+              AI Engineer · Multi-Agent Systems · RLHF / GRPO · Agentic RAG
             </p>
           </div>
           <div className="flex justify-center gap-4">
@@ -63,35 +63,30 @@ export default function Home() {
           <h2 className="text-3xl mb-6 text-center">About Me</h2>
           <div className="space-y-6 text-slate-700 max-w-3xl mx-auto">
             <p className="text-lg leading-relaxed">
-              I am an AI developer and data scientist specializing in building
-              intelligent systems powered by Large Language Models. With dual
-              master's degrees in Computer Science and Biostatistics, I combine
-              cutting-edge AI technology with rigorous statistical methodology
-              to create innovative solutions for complex data challenges.
+              AI Engineer specializing in multi-agent systems, post-training
+              alignment, and production-grade agentic pipelines. With dual
+              master's degrees in Computer Science (Georgia Tech)
+              and Biostatistics (UNC Chapel Hill), I bring statistical
+              rigor to AI system design, evaluation, and reliability.
             </p>
             <p className="text-lg leading-relaxed">
-              Currently at R2.AI in Shanghai, I architect enterprise-grade AI
-              platforms integrating LLMs with traditional data engineering.
-              My flagship project is a multi-agent ETL orchestration system
-              featuring Text-to-SQL, intelligent semantic routing, and
-              conversational data transformation—reducing manual workflows
-              from hours to minutes while achieving over 90% accuracy on
-              domain-specific tasks.
+              At R2.AI, I architect a dual-agent platform: a conversational
+              orchestrator handling multi-turn intent classification, session
+              state management, and remote baseline bootstrapping — paired
+              with a LangGraph-based execution specialist that generates and
+              modifies data pipelines via structured tool calls. The system
+              implements tiered memory (short-term context window,
+              LLM-as-judge long-term memory, Agentic RAG via MCP tools)
+              and includes a GRPO fine-tuned Qwen Coder 1.5B model for
+              reliable, self-correcting SQL generation.
             </p>
             <p className="text-lg leading-relaxed">
-              My technical expertise spans LangGraph multi-agent systems,
-              RAG architectures, full-stack development (React, FastAPI,
-              WebSocket), and statistical modeling (survival analysis,
-              causal inference, mixed-effects models). I've successfully
-              deployed production systems handling complex DAG pipelines,
-              real-time streaming interfaces, and robust state management
-              with session rollback capabilities.
-            </p>
-            <p className="text-lg leading-relaxed">
-              I am passionate about pushing the boundaries of what AI can
-              achieve—building systems that are not only intelligent but
-              also reliable, explainable, and genuinely useful for solving
-              real-world problems.
+              My statistics background enables rigorous model evaluation
+              and experimental design — a meaningful differentiator when
+              building AI systems where accuracy and reliability are
+              non-negotiable. Previously at Parexel, I led statistical
+              modeling for oncology and neurology clinical trials across
+              2,000+ patients.
             </p>
           </div>
 
@@ -126,7 +121,7 @@ export default function Home() {
                 Learn more <ArrowRight className="w-4 h-4 ml-1" />
               </div>
             </Link>
-            
+
             <Link
               to="/publications"
               className="group bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"

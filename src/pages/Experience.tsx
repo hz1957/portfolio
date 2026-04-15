@@ -27,19 +27,17 @@ export default function Experience() {
       >
         <div className="space-y-8">
           <ExperienceCard
-            title="AI Developer"
+            title="AI Engineer"
             company="R2.AI"
             location="Shanghai"
             period="June 2025 — Present"
             current={true}
             achievements={[
-              "Pioneered a 'Chat-to-Visual' ETL Platform: Architected a Generative UI system (akin to Figma Make) where AI agents autonomously construct editable, drag-and-drop data pipelines from natural language. This democratized clinical data processing, allowing non-technical researchers to build complex SDTM workflows via a 'Chat-to-Edit' interface",
-              "Built a Engineered Mixed-Initiative Orchestration: Designed bidirectional state synchronization between LangGraph-based planners and the visual canvas. Enabled users to iterate on analysis logic through both conversation and direct manipulation of ETL operators (e.g., Join, Filter, Unpivot), supported by real-time validation and auto-rollback for error resilience",
-              "Developed Enterprise Text-to-SQL System: Built a robust RAG engine with capabilities similar to Dify, integrating domain-specific knowledge (CDISC) to transform raw questions into precise SQL queries and ECharts visualizations for medical data review",
-              "Implemented RLHF-aligned specialized policy models using AgentLightning and PPO to execute atomic tool actions, decoupling structured SQL generation from general reasoning. This design reduced inference latency on high-frequency execution nodes while preserving strict semantic correctness via preference-based alignment",
-              "Transformed Unstructured Data to Quotes: Automated the extraction of numerical and formulaic details from 20-page RFPs into editable quote templates using LLMs, with dynamic pricing computation from backend databases",
-              "Optimized Model Inference & Hallucination: Implemented prompt-plus-JSON-Schema guardrails that reduced hallucination rates from 30% to 4%, and benchmarked Qwen-Max on SGLang to optimize token throughput under high-concurrency agent workloads",
-              "Fine-tuned Medical NLP Models: Trained Chinese-MacBERT models for medical Named Entity Recognition (NER), achieving >90% token-level accuracy on CMeEE datasets and establishing reusable sequence-labeling pipelines",
+              "Multi-Agent Architecture for Conversational Pipeline Generation: Designed a two-agent system — a conversational orchestrator (multi-turn intent classification, session state management, production-state bootstrapping) and a pipeline execution specialist — enabling stateful, iterative data workflow construction through natural language.",
+              "Tool-Call-Based Agentic Planning with Self-Correction: Designed an iterative planning loop with intent-classified tool scoping, structured execution feedback, and automatic full-replan fallback on convergence failure — applying standard reliability patterns for production agentic systems.",
+              "Agent Memory & Tiered Retrieval: Designed a context system with full short-term history, LLM-as-judge long-term memory and domain knowledge (stored as structured skill files); MCP-wrapped Traditional RAG serves as the fast retrieval path, with Agentic RAG fallback for progressive multi-hop skill document search on insufficient context.",
+              "RLHF for SQL Generation: Fine-tuned Qwen Coder 1.5B via GRPO (AgentLightning) to learn a self-correcting SQL generation loop, achieving reliable Spark-executable output and decoupling this high-frequency task from general-purpose LLM inference.",
+              "LLM Inference Optimization: Enforced output determinism via JSON-Schema guardrails for structured tool calls; benchmarked Qwen-Max on SGLang to maximize throughput under high-concurrency agentic workloads.",
             ]}
           />
 
@@ -104,24 +102,22 @@ export default function Experience() {
       >
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
-            <h3 className="mb-3">AI & ML</h3>
+            <h3 className="mb-3">Agentic AI & LLMs</h3>
             <ul className="space-y-1 text-sm text-slate-700">
-              <li>• LangGraph & Agentic AI</li>
-              <li>• RLHF & Post-Training </li>
+              <li>• Multi-Agent Orchestration</li>
+              <li>• LangGraph & Tool-Calling</li>
+              <li>• Agentic RAG & MCP</li>
+              <li>• Agent Memory Systems</li>
               <li>• Prompt Engineering</li>
-              <li>• NLP & Information Extraction (NER)</li>
-              <li>• Computer Vision & Multimodal Models</li>
             </ul>
           </div>
 
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
-            <h3 className="mb-3">Statistics</h3>
+            <h3 className="mb-3">RL & Post-Training</h3>
             <ul className="space-y-1 text-sm text-slate-700">
-              <li>• Survival Analysis</li>
-              <li>• Mixed-Effects Models</li>
-              <li>• Causal Inference</li>
-              <li>• Clinical Trial Design</li>
-              <li>• Hypothesis Testing</li>
+              <li>• RLHF & GRPO</li>
+              <li>• PPO (AgentLightning)</li>
+              <li>• Reward Modeling</li>
             </ul>
           </div>
 
@@ -130,19 +126,19 @@ export default function Experience() {
             <ul className="space-y-1 text-sm text-slate-700">
               <li>• Python</li>
               <li>• Java & Spring Boot</li>
-              <li>• React & TypeScript</li>
-              <li>• Next.js</li>
+              <li>• SQL & R</li>
+              <li>• SAS</li>
             </ul>
           </div>
 
           <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6">
-            <h3 className="mb-3">Tools & Frameworks</h3>
+            <h3 className="mb-3">Systems & Infra</h3>
             <ul className="space-y-1 text-sm text-slate-700">
-              <li>• ETL Pipelines & JSON-Schema</li>
-              <li>• Redis & MySQL</li>
-              <li>• Cloud Deployment</li>
-              <li>• Playwright (Automation Testing)</li>
-              <li>• Data Visualization</li>
+              <li>• Docker & Nginx & AWS</li>
+              <li>• MySQL & Redis</li>
+              <li>• SGLang & JSON Schema</li>
+              <li>• ETL Pipelines</li>
+              <li>• Playwright</li>
             </ul>
           </div>
         </div>
@@ -156,26 +152,26 @@ export default function Experience() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-xl p-6 shadow-md text-center">
             <div className="text-4xl mb-2 text-blue-600">
-              90%+
+              4%
             </div>
             <p className="text-slate-700">
-              Token-level accuracy on medical NER tasks
+              Hallucination rate after JSON-Schema guardrails (down from 30%)
             </p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center">
             <div className="text-4xl mb-2 text-purple-600">
-              2,000+
+              90%+
             </div>
             <p className="text-slate-700">
-              Patients analyzed in clinical trials
+              Token-level accuracy on medical NER (Chinese-MacBERT, CMeEE)
             </p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center">
             <div className="text-4xl mb-2 text-green-600">
-              2%
+              2,000+
             </div>
             <p className="text-slate-700">
-              Hallucination rate with guardrails (down from 30%)
+              Patients analyzed across oncology &amp; neurology trials
             </p>
           </div>
         </div>
