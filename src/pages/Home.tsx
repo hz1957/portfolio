@@ -27,7 +27,7 @@ export default function Home() {
               Hello, I'm Haoming
             </h1>
             <p className="text-xl text-slate-100 max-w-2xl mx-auto drop-shadow-md">
-              AI Engineer · Multi-Agent Systems · RLHF / GRPO · Agentic RAG
+              AI Engineer · Statistician
             </p>
           </div>
           <div className="flex justify-center gap-4">
