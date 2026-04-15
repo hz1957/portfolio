@@ -77,11 +77,7 @@ export default function Contact() {
               </p>
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>
-                Data Engineering & ETL Platforms
-              </p>
-              <p className="flex items-start gap-2">
-                <span className="text-blue-600">•</span>
-                LLM Inference / Training
+                LLM Fine-Tuning & Optimization
               </p>
               <p className="flex items-start gap-2">
                 <span className="text-blue-600">•</span>

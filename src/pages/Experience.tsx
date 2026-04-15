@@ -48,7 +48,7 @@ export default function Experience() {
             period="July 2021 — Feb 2025"
             current={false}
             achievements={[
-              "Conducted statistical modeling for oncology clinical trials, building and maintaining survival models (Cox regression, Kaplan–Meier) and causal inference models (propensity score, IPTW) for over 2,000 patients; handled missing data to support efficacy evaluation and risk prediction",
+              "Conducted statistical modeling for oncology and neurology clinical trials, building and maintaining survival models (Cox regression, Kaplan–Meier) and causal inference models (propensity score, IPTW) for over 2,000 patients; handled missing data to support efficacy evaluation and risk prediction",
               "Designed and implemented linear and generalized linear mixed-effects models, as well as ANCOVA, for neurological clinical trials to analyze changes in cognitive scores and guide dose adjustment",
               "Integrated large-scale data from electronic medical records, lab tests, and follow-up logs using SQL and R to conduct in-depth analysis and study variable patterns and subject-level outcomes",
               "Designed and analyzed hypothesis testing (A/B testing) using multivariable mixed-effects models to evaluate causal effects and compare multiple treatment strategies across diseases",
