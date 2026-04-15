@@ -110,18 +110,6 @@ export default function Projects() {
             githubUrl="https://github.com/hz1957/Drone-Delivery-Service"
           />
           <ProjectCard
-            title="Fresh Produce Delivery Management System"
-            description="Full-stack backend system for fresh produce delivery, supporting order management, logistics tracking, and return processing."
-            tags={[
-              "Java",
-              "Spring Boot",
-              "REST API",
-              "Docker",
-              "Nginx",
-            ]}
-            githubUrl="#"
-          />
-          <ProjectCard
             title="Car Sales Web Application"
             description="Full-stack web application for managing car sales inventory and customer transactions"
             tags={[
