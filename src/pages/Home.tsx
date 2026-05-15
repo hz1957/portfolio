@@ -27,7 +27,7 @@ export default function Home() {
               Hello, I'm Haoming
             </h1>
             <p className="text-xl text-slate-100 max-w-2xl mx-auto drop-shadow-md">
-              AI Engineer · Statistician
+              AI Engineer - Statistician
             </p>
           </div>
           <div className="flex justify-center gap-4">
@@ -70,19 +70,17 @@ export default function Home() {
               rigor to AI system design, evaluation, and reliability.
             </p>
             <p className="text-lg leading-relaxed">
-              At R2.AI, I architect a dual-agent platform: a conversational
-              orchestrator handling multi-turn intent classification, session
-              state management, and remote baseline bootstrapping — paired
-              with a LangGraph-based execution specialist that generates and
-              modifies data pipelines via structured tool calls. The system
-              implements tiered memory (short-term context window,
-              LLM-as-judge long-term memory, Agentic RAG via MCP tools)
-              and includes a GRPO fine-tuned Qwen Coder 1.5B model for
-              reliable, self-correcting SQL generation.
+              At R2.AI, I work on a chat-based visual data transformation
+              system where users describe workflows in natural language and
+              an LLM agent generates structured JSON pipelines for a
+              drag-and-drop canvas. The system combines a conversational
+              orchestrator, a pipeline-generation agent, tool-call
+              self-correction, tiered retrieval, and GRPO-style post-training
+              prototypes for self-correcting SQL generation.
             </p>
             <p className="text-lg leading-relaxed">
               My statistics background enables rigorous model evaluation
-              and experimental design — a meaningful differentiator when
+              and experimental design - a meaningful differentiator when
               building AI systems where accuracy and reliability are
               non-negotiable. Previously at Parexel, I led statistical
               modeling for oncology and neurology clinical trials across

@@ -28,43 +28,53 @@ export default function Projects() {
       >
         <FeaturedProjectCard
           title="Multi-Agent Data Pipeline Platform"
-          subtitle="Conversational ETL & SQL Generation with Agentic Orchestration"
-          description="A production dual-agent system where a conversational orchestrator routes multi-turn user intent and manages session state, while a LangGraph-based execution specialist generates and modifies data transformation pipelines via structured tool calls. Includes tiered agent memory (LLM-as-judge long-term memory + Agentic RAG via MCP tools) and a GRPO fine-tuned Qwen Coder 1.5B for self-correcting SQL generation."
+          subtitle="Chat-Based Visual Data Transformation with Agentic JSON Pipeline Generation"
+          description="A chat-based visual data transformation system where users describe workflows in natural language and an LLM agent generates structured JSON pipelines for a front-end drag-and-drop canvas. The system uses a two-agent workflow: a conversational orchestrator for multi-turn intent understanding and session state management, and a pipeline-generation agent for producing and revising executable workflow JSON."
           features={[
             {
-              title: "1. Multi-Agent Architecture & Stateful Orchestration",
+              title: "1. Conversational Pipeline Generation",
               items: [
-                "Role Separation: Conversational orchestrator handles multi-turn intent classification (CHITCHAT / DATA_EXPERT / PLAN_RECALL / REFINEMENT / NEW_REQUEST), session state management, and remote production-state bootstrapping — keeping context continuity without user re-prompting",
-                "Execution Specialist: LangGraph-based ETL agent receives scoped payloads (refined instruction, relevant tables, prior plan) and generates or modifies pipelines via structured tool calls",
-                "Context Integrity: Execution-time data contracts via scoped artifact passing prevent stale context from polluting downstream planning; semantic alignment with remote production state on every run",
+                "Natural Language to Workflow JSON: Users describe data transformation goals in chat, and the agent converts intent into structured pipeline JSON for a visual drag-and-drop canvas",
+                "Two-Agent Workflow: Conversational orchestrator manages multi-turn intent understanding and session state, while the pipeline-generation agent produces and revises executable workflow JSON",
+                "Stateful Revision Flow: Prior workflow state, user refinements, and execution feedback are passed as scoped context so the system can update existing pipelines rather than regenerate from scratch",
               ],
             },
             {
-              title: "2. Tool-Call Agentic Planning with Self-Correction",
+              title: "2. Tool-Call Loop with Self-Correction",
               items: [
-                "Intent-Classified Tool Scoping: Modification intent classifier routes between PURE_MODIFICATION (node-level updates) and STRUCTURE_CHANGE (DAG rewiring), selecting the appropriate tool set for each mode",
-                "Feedback-Driven Iteration: Agent applies incremental changes via tool calls, receives structured execution feedback, and converges toward a valid plan — with Soft/Hard Watchdogs enforcing DAG convergence",
-                "Graceful Degradation: Automatic full-replan fallback (Replan) and NoOp fallback when modification produces no valid change — ensuring the system never silently produces inconsistent output",
+                "Intent-Specific Tool Selection: The agent selects tools based on the requested operation, separating node-level edits, structure changes, and new pipeline generation paths",
+                "Structured Execution Feedback: Tool results and validation errors are returned in a machine-readable format so the agent can diagnose failed or invalid pipeline steps",
+                "Repair-Oriented Iteration: Self-correction logic revises invalid steps and falls back to broader replanning when incremental repair cannot converge",
               ],
             },
             {
               title: "3. Agent Memory & Tiered RAG",
               items: [
-                "Three-Tier Context: Full short-term windowed history + LLM-as-judge long-term memory (written to persistent skill files, retrieved via one-shot RAG) + domain knowledge corpus",
-                "MCP-Wrapped Traditional RAG: Fast retrieval path using BM25 + vector similarity + reranker, exposed as MCP tools callable by the agent",
-                "Agentic RAG Fallback: When traditional RAG is insufficient, the agent self-generates search queries, calls retrieval tools (Grep, file scan, terminal), and iterates in a ReAct loop until context sufficiency is confirmed",
+                "Tiered Context System: Combines short-term conversation history, LLM-scored long-term memory, and structured domain knowledge for workflow-aware generation",
+                "MCP-Wrapped Traditional RAG: Fast retrieval path for common context needs, exposed through MCP tools that the agent can call during planning",
+                "Agentic RAG Fallback: When retrieved context is insufficient, the agent performs progressive multi-hop skill document search before finalizing a pipeline",
+              ],
+            },
+            {
+              title: "4. Post-Training & Inference Reliability",
+              items: [
+                "GRPO Prototype: Prototyped GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable transformations",
+                "Structured Output Determinism: Used JSON Schema constrained decoding and downstream validation to keep generated workflow JSON compatible with the execution layer",
+                "Inference Profiling: Measured TTFT, end-to-end latency, token throughput, and cache-reuse effects across varying concurrency and shared-prefix patterns",
               ],
             },
           ]}
           techStack={[
             "Multi-Agent",
-            "LangGraph",
-            "RLHF / GRPO",
+            "Tool Calling",
+            "JSON Schema",
+            "GRPO",
             "Agentic RAG",
             "MCP",
+            "Qwen Coder",
             "Python",
             "FastAPI",
-            "SGLang",
+            "Spark SQL",
             "MySQL",
             "Redis",
             "React",
@@ -135,7 +145,7 @@ export default function Projects() {
             <h3 className="text-xl mb-3">LLM & AI Agents</h3>
             <p className="text-slate-700 text-sm leading-relaxed">
               Building intelligent multi-agent systems with
-              LangGraph, implementing ReAct reasoning, semantic
+              structured tool calling, ReAct reasoning, semantic
               routing, and RAG architectures for enterprise
               applications.
             </p>

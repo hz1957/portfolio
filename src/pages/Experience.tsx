@@ -33,11 +33,12 @@ export default function Experience() {
             period="June 2025 — Present"
             current={true}
             achievements={[
-              "Multi-Agent Architecture for Conversational Pipeline Generation: Designed a two-agent system — a conversational orchestrator (multi-turn intent classification, session state management, production-state bootstrapping) and a pipeline execution specialist — enabling stateful, iterative data workflow construction through natural language.",
-              "Tool-Call-Based Agentic Planning with Self-Correction: Designed an iterative planning loop with intent-classified tool scoping, structured execution feedback, and automatic full-replan fallback on convergence failure — applying standard reliability patterns for production agentic systems.",
-              "Agent Memory & Tiered Retrieval: Designed a context system with full short-term history, LLM-as-judge long-term memory and domain knowledge (stored as structured skill files); MCP-wrapped Traditional RAG serves as the fast retrieval path, with Agentic RAG fallback for progressive multi-hop skill document search on insufficient context.",
-              "RLHF for SQL Generation: Fine-tuned Qwen Coder 1.5B via GRPO (AgentLightning) to learn a self-correcting SQL generation loop, achieving reliable Spark-executable output and decoupling this high-frequency task from general-purpose LLM inference.",
-              "LLM Inference Optimization: Enforced output determinism via JSON-Schema guardrails for structured tool calls; benchmarked Qwen-Max on SGLang to maximize throughput under high-concurrency agentic workloads.",
+              "Worked on a chat-based visual data transformation system where users describe data workflows in natural language and the LLM agent generates structured JSON pipelines for a front-end drag-and-drop canvas.",
+              "Designed a two-agent workflow: a conversational orchestrator for multi-turn intent understanding and session state management, and a pipeline-generation agent for producing and revising executable workflow JSON.",
+              "Built a tool-call-based loop with intent-specific tool selection, structured execution feedback, and self-correction logic to repair failed or invalid pipeline steps.",
+              "Agent Memory & Tiered Retrieval: Designed a context system with short-term conversation history, LLM-scored long-term memory and structured domain knowledge. MCP-wrapped Traditional RAG serves as the fast retrieval path, with Agentic RAG fallback for progressive multi-hop skill document search on insufficient context.",
+              "Prototyped GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable data transformation tasks.",
+              "LLM Inference Optimization: Enforced output determinism via structured outputs with JSON Schema constrained decoding and downstream validation; Profiled LLM inference performance in agentic workflows, measuring TTFT, end-to-end latency, token throughput, and cache-reuse effects under varying concurrency and shared-prefix patterns.",
             ]}
           />
 
