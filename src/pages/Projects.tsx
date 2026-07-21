@@ -66,15 +66,13 @@ export default function Projects() {
           ]}
           techStack={[
             "Multi-Agent",
-            "Tool Calling",
-            "JSON Schema",
-            "GRPO",
+            "LangGraph",
+            "RLHF / GRPO",
             "Agentic RAG",
             "MCP",
-            "Qwen Coder",
             "Python",
             "FastAPI",
-            "Spark SQL",
+            "SGLang",
             "MySQL",
             "Redis",
             "React",
