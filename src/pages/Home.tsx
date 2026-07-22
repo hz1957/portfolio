@@ -1,7 +1,6 @@
 import { ArrowUpRight, BookOpen, FileText, Linkedin, Mail } from "lucide-react";
 import type { CSSProperties } from "react";
 
-const cvHref = `${import.meta.env.BASE_URL}Haoming_Zhang_CV_EN.doc`;
 const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
 
 type StarStyle = CSSProperties & Record<`--${string}`, string>;
@@ -208,10 +207,6 @@ export default function Home() {
             >
               <Linkedin aria-hidden="true" />
               LinkedIn
-            </a>
-            <a className="hero-link" href={cvHref} download>
-              <FileText aria-hidden="true" />
-              Download CV
             </a>
           </div>
         </div>
