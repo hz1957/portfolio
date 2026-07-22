@@ -37,7 +37,7 @@ export default function Experience() {
               "Designed a two-agent workflow: a conversational orchestrator for multi-turn intent understanding and session state management, and a pipeline-generation agent for producing and revising executable workflow JSON.",
               "Built a tool-call-based loop with intent-specific tool selection, structured execution feedback, and self-correction logic to repair failed or invalid pipeline steps.",
               "Agent Memory & Tiered Retrieval: Designed a context system with short-term conversation history, LLM-scored long-term memory and structured domain knowledge. MCP-wrapped Traditional RAG serves as the fast retrieval path, with Agentic RAG fallback for progressive multi-hop skill document search on insufficient context.",
-              "Prototyped GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable data transformation tasks.",
+              "Developed GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable data transformation tasks.",
               "LLM Inference Optimization: Enforced output determinism via structured outputs with JSON Schema constrained decoding and downstream validation; Profiled LLM inference performance in agentic workflows, measuring TTFT, end-to-end latency, token throughput, and cache-reuse effects under varying concurrency and shared-prefix patterns.",
             ]}
           />

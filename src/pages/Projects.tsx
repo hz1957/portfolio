@@ -58,7 +58,7 @@ export default function Projects() {
             {
               title: "4. Post-Training & Inference Reliability",
               items: [
-                "GRPO Prototype: Prototyped GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable transformations",
+                "GRPO Training: Developed GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable transformations",
                 "Structured Output Determinism: Used JSON Schema constrained decoding and downstream validation to keep generated workflow JSON compatible with the execution layer",
                 "Inference Profiling: Measured TTFT, end-to-end latency, token throughput, and cache-reuse effects across varying concurrency and shared-prefix patterns",
               ],

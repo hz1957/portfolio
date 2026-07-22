@@ -56,7 +56,7 @@ const trainingWork = [
   {
     title: "GRPO-style workflow optimization",
     detail:
-      "Prototyped group-relative rewards and discounted return propagation to SQL Script node actions, improving held-out end-to-end success from 72.5% to 77.5% on 80 manually evaluated tasks.",
+      "Built group-relative rewards and discounted return propagation to SQL Script node actions, improving held-out end-to-end success from 72.5% to 77.5% on 80 manually evaluated tasks.",
   },
   {
     title: "Inference and reliability evaluation",
@@ -108,7 +108,7 @@ const experiences = [
 
 const projects = [
   {
-    title: "SQL Agent Training Prototype",
+    title: "SQL Agent Training Framework",
     tech: "Python / PyTorch / GRPO",
     detail:
       "Research codebase for trajectory-based RL training on SQL/DAG generation tasks; group-relative rewards and discounted return propagation to node actions.",
