@@ -45,17 +45,17 @@ const trainingWork = [
   {
     title: "Qwen-Coder SQL specialist",
     detail:
-      "Fine-tuned a 7B Qwen-Coder model with LoRA SFT on Spider gold SQL tasks, improving offline SQL rewrite accuracy from 68% to 80%.",
+      "Fine-tuned a 7B Qwen-Coder SQL specialist with SFT on Spider gold SQL tasks, improving offline SQL rewrite accuracy from 68% to 80% for SQL Script generation.",
   },
   {
-    title: "Trajectory-based RL data",
+    title: "Trajectory-based RL data pipeline",
     detail:
-      "Built training data from 250 business ETL tasks with 4 rollouts each, using human-labeled end-to-end DAG correctness rewards.",
+      "Built a trajectory-based RL data pipeline from 250 business ETL tasks with 4 rollouts each, using human-labeled end-to-end DAG correctness rewards.",
   },
   {
-    title: "GRPO-style workflow optimization",
+    title: "GRPO-style post-training",
     detail:
-      "Built group-relative rewards and discounted return propagation to SQL Script node actions, improving held-out end-to-end success from 72.5% to 77.5% on 80 manually evaluated tasks.",
+      "Engineered GRPO-style post-training with group-relative rewards and discounted return propagation to SQL Script node actions, improving held-out end-to-end workflow success from 72.5% to 77.5% on 80 manually evaluated business tasks.",
   },
   {
     title: "Inference and reliability evaluation",
@@ -77,9 +77,10 @@ const experiences = [
     place: "Shanghai",
     period: "June 2025 - May 2026",
     points: [
-      "SFT and RL optimization for executable SQL/DAG generation.",
-      "LangGraph agents for natural-language ETL workflow creation and iterative repair.",
-      "Hybrid retrieval and model-serving evaluation for enterprise data automation.",
+      "LLM-powered ETL agent for natural-language to executable JSON DAG generation.",
+      "LangGraph plan-execute-repair loop with domain-specific tool calling, PySpark validation and automatic replanning.",
+      "SFT/RL post-training and reliability evaluation for Qwen-Coder SQL generation.",
+      "Hybrid RAG knowledge pipeline with MinerU, Milvus, BGE retrieval/reranking, BM25 recall and RRF fusion.",
     ],
   },
   {
@@ -187,12 +188,13 @@ export default function Home() {
           <h1>Haoming Zhang</h1>
           <p className="hero-role">AI Research Engineer</p>
           <p className="hero-bio">
-            Model training and execution-guided optimization for SQL and
-            data-workflow generation. I then place trained capabilities inside
-            LLM agent systems with tool feedback, validation, and repair loops.
-            My background in statistical modeling and machine learning helps me
-            evaluate model behavior carefully: reading metrics, defining failure
-            cases, and avoiding overclaiming.
+            AI engineer specializing in LLM post-training and agentic systems.
+            I work across the agent lifecycle: RL data pipelines, reward
+            modeling, execution-guided SQL/DAG optimization, inference
+            profiling, and deployment-facing reliability. My background in
+            statistical modeling and clinical-trial analytics helps me evaluate
+            model behavior carefully: reading metrics, defining failure cases,
+            and avoiding overclaiming.
           </p>
           <div className="hero-links">
             <a className="hero-link" href="mailto:zhm0044@gmail.com">
