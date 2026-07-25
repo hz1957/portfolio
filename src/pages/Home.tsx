@@ -45,7 +45,7 @@ const trainingWork = [
   {
     title: "Qwen-Coder SQL specialist",
     detail:
-      "Fine-tuned a 7B Qwen-Coder SQL specialist with SFT on Spider gold SQL tasks, improving offline SQL rewrite accuracy from 68% to 80% for SQL Script generation.",
+      "•	Fine-tuned a 14B Qwen-Coder SQL specialist with SFT on Spider gold SQL tasks on multi-GPU H100 nodes using DeepSpeed ZeRO, improving offline SQL rewrite accuracy from 68% to 85% for SQL Script generation.",
   },
   {
     title: "Trajectory-based RL data pipeline",
