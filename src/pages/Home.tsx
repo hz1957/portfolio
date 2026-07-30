@@ -113,6 +113,16 @@ const projects = [
     detail:
       "Research codebase for trajectory-based RL training on SQL/DAG generation tasks; group-relative rewards and discounted return propagation to node actions.",
     href: "https://github.com/hz1957/sql_agent_training",
+    reportHref: "https://hz1957.github.io/sql_agent_training/",
+  },
+  {
+    title: "Predicting Citation Impact of Scientific Papers",
+    tech: "Python / NLP / ML",
+    detail:
+      "Prediction pipeline for estimating scientific paper citation impact from paper-derived signals, with a final report covering data processing, modeling and evaluation.",
+    href: "https://github.com/hz1957/Predicting-Citation-Impact-of-Scientific-Papers",
+    reportHref:
+      "https://hz1957.github.io/Predicting-Citation-Impact-of-Scientific-Papers/progress-documents/final/",
   },
   {
     title: "Human retina cell clustering",
@@ -267,15 +277,26 @@ export default function Home() {
             {projects.map((project) => (
               <div className="project-entry" key={project.title}>
                 <div className="project-name">
-                  {project.href ? (
-                    <a href={project.href} target="_blank" rel="noopener noreferrer">
-                      {project.title}
-                      <ArrowUpRight aria-hidden="true" />
-                    </a>
-                  ) : (
-                    <span>{project.title}</span>
-                  )}
+                  <span>{project.title}</span>
                   <span className="project-tech">{project.tech}</span>
+                  <div className="project-links">
+                    {project.href && (
+                      <a href={project.href} target="_blank" rel="noopener noreferrer">
+                        <ArrowUpRight aria-hidden="true" />
+                        Code
+                      </a>
+                    )}
+                    {project.reportHref && (
+                      <a
+                        href={project.reportHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FileText aria-hidden="true" />
+                        Report
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <p className="project-detail">{project.detail}</p>
               </div>
