@@ -157,7 +157,7 @@ const skillGroups = [
   },
   {
     label: "Deep learning",
-    items: ["PyTorch", "TensorFlow", "SGLang", "vLLM", "Transformers"],
+    items: ["PyTorch", "DeepSpeed", "vLLM", "Transformers"],
   },
   {
     label: "Engineering and statistics",
