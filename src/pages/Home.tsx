@@ -108,8 +108,8 @@ const experiences = [
 
 const projects = [
   {
-    title: "SQL Agent Training Framework",
-    tech: "Python / PyTorch / GRPO",
+    title: "SQL Agent Post-Training",
+    tech: "SFT / GRPO / DeepSpeed / vLLM",
     detail:
       "Research codebase for trajectory-based RL training on SQL/DAG generation tasks; group-relative rewards and discounted return propagation to node actions.",
     href: "https://github.com/hz1957/sql_agent_training",
