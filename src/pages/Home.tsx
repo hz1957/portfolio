@@ -1,7 +1,5 @@
-import { ArrowUpRight, BookOpen, FileText, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, BookOpen, FileText, Github, Linkedin, Mail } from "lucide-react";
 import type { CSSProperties } from "react";
-
-const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
 
 type StarStyle = CSSProperties & Record<`--${string}`, string>;
 
@@ -45,29 +43,29 @@ const trainingWork = [
   {
     title: "Qwen-Coder SQL specialist",
     detail:
-      "•	Fine-tuned a 14B Qwen-Coder SQL specialist with SFT on Spider gold SQL tasks on multi-GPU H100 nodes using DeepSpeed ZeRO, improving offline SQL rewrite accuracy from 68% to 85% for SQL Script generation.",
+      "LoRA fine tuned a Qwen-Coder SQL model on execution-verified Spider SQL trajectories using DeepSpeed, FlashAttention and activation checkpointing, improving execution accuracy for SQL generation.",
   },
   {
     title: "Trajectory-based RL data pipeline",
     detail:
-      "Built a trajectory-based RL data pipeline from 250 business ETL tasks with 4 rollouts each, using human-labeled end-to-end DAG correctness rewards.",
+      "Built a trajectory-based RL pipeline for business ETL tasks, supporting both chain rollouts and multi-branch Tree Search rollouts.",
   },
   {
-    title: "GRPO-style post-training",
+    title: "Execution-reward GRPO",
     detail:
-      "Engineered GRPO-style post-training with group-relative rewards and discounted return propagation to SQL Script node actions, improving held-out end-to-end workflow success from 72.5% to 77.5% on 80 manually evaluated business tasks.",
+      "Engineered GRPO post-training in verl with execution-based rewards, comparing reward schemes, KL coefficients, PPO epochs and rollout configurations; Tree Search rollouts improved execution reliability while using fewer rollout resources.",
   },
   {
-    title: "Inference and reliability evaluation",
+    title: "Training-system optimization",
     detail:
-      "Benchmarked TTFT, latency, throughput, prefix-cache reuse and tool-call reliability with JSON Schema constrained decoding.",
+      "Optimized the verl/Ray/vLLM post-training pipeline through stage-level profiling, reducing Actor-to-vLLM synchronization latency and actor-update overhead while resolving memory bottlenecks.",
   },
 ];
 
 const agentWork = [
-  "LLM-powered ETL agent converting natural-language requirements into executable JSON DAGs for a visual workflow canvas.",
-  "LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, PySpark validation and automatic replanning.",
-  "Hybrid RAG pipeline with MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion and reranking.",
+  "Developed an LLM-powered ETL agent that converts natural-language transformation requirements into executable JSON DAGs for a visual drag-and-drop workflow canvas, supporting both pipeline creation and iterative modification.",
+  "Architected a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
+  "Designed a hybrid RAG pipeline for enterprise knowledge retrieval with MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion and BGE reranking.",
 ];
 
 const experiences = [
@@ -77,10 +75,13 @@ const experiences = [
     place: "Shanghai",
     period: "June 2025 - May 2026",
     points: [
-      "LLM-powered ETL agent for natural-language to executable JSON DAG generation.",
-      "LangGraph plan-execute-repair loop with domain-specific tool calling, PySpark validation and automatic replanning.",
-      "SFT/RL post-training and reliability evaluation for Qwen-Coder SQL generation.",
-      "Hybrid RAG knowledge pipeline with MinerU, Milvus, BGE retrieval/reranking, BM25 recall and RRF fusion.",
+      "Developed an LLM-powered ETL agent for natural-language to executable JSON DAG generation, supporting workflow creation and iterative modification.",
+      "Architected a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback and PySpark validation.",
+      "LoRA fine tuned a Qwen-Coder SQL model on execution-verified Spider SQL trajectories, improving execution accuracy for SQL generation.",
+      "Built trajectory-based RL for business ETL tasks, including chain and multi-branch Tree Search rollouts.",
+      "Engineered GRPO post-training in verl with execution-based rewards and Tree Search rollouts.",
+      "Optimized verl/Ray/vLLM training stages, reducing Actor-to-vLLM synchronization latency and actor-update overhead.",
+      "Designed a hybrid RAG pipeline with MinerU, Milvus-backed BGE retrieval, BM25 recall, RRF fusion and BGE reranking.",
     ],
   },
   {
@@ -89,18 +90,20 @@ const experiences = [
     place: "Durham, NC",
     period: "July 2021 - Feb 2025",
     points: [
-      "Survival models, causal inference and missing-data workflows for oncology trials covering 2,000+ patients.",
-      "Mixed-effects models, ANCOVA and hypothesis testing for neurological clinical trial endpoints.",
-      "SQL, R and SAS programs for regulatory-quality analysis deliverables under SDTM/ADaM standards.",
+      "Conducted statistical modeling for oncology clinical trials, building Cox regression, Kaplan-Meier and propensity-score models for large trial cohorts.",
+      "Designed hypothesis testing, linear and generalized linear mixed-effects models, and ANCOVA for neurological clinical trial endpoints.",
+      "Integrated electronic medical records, lab tests and follow-up logs using SQL and R to assess treatment efficacy and safety.",
+      "Developed SQL, R and SAS programs for analysis and visualization, producing regulatory-quality deliverables.",
+      "Authored and reviewed Statistical Analysis Plans while maintaining SDTM and ADaM data standards.",
     ],
   },
   {
     role: "Graduate Research Assistant",
-    company: "UNC Chapel Hill",
+    company: "UNC",
     place: "Chapel Hill, NC",
     period: "Jan 2021 - May 2021",
     points: [
-      "Analyzed SARS-CoV-2 household transmission risk factors across roughly 500 participants in North Carolina.",
+      "Analyzed SARS-CoV-2 household transmission risk factors across a North Carolina cohort.",
       "R data processing, ggplot2 visualizations, mixed-model and ICC analyses.",
     ],
   },
@@ -111,7 +114,7 @@ const projects = [
     title: "SQL Agent Post-Training",
     tech: "SFT / GRPO / DeepSpeed / vLLM",
     detail:
-      "Research codebase for trajectory-based RL training on SQL/DAG generation tasks; group-relative rewards and discounted return propagation to node actions.",
+      "Open-source post-training project for SQL/DAG generation: execution-verified SFT data, trajectory-based RL, GRPO reward experiments, and system profiling around DeepSpeed, verl/Ray and vLLM.",
     href: "https://github.com/hz1957/sql_agent_training",
     reportHref: "https://hz1957.github.io/sql_agent_training/",
   },
@@ -125,43 +128,43 @@ const projects = [
       "https://hz1957.github.io/Predicting-Citation-Impact-of-Scientific-Papers/progress-documents/final/",
   },
   {
-    title: "Human retina cell clustering",
-    tech: "R / ML",
+    title: "Human Retina Cell Clustering",
+    tech: "R / Unsupervised ML",
     detail:
-      "Unsupervised scRNA-seq clustering with t-SNE + K-means, CCA + Seurat and SAME; Random Forest validation; ARI 0.967 vs. Menon et al. (2019).",
+      "Applied t-SNE/K-means, CCA+Seurat and SAME clustering to classify retinal cell types from scRNA-seq data, validating results with Random Forest and matching benchmark performance.",
     href: "https://github.com/hz1957/Human-retina-cellular-landscape-clustering",
   },
   {
-    title: "DoF approximations in joint mixed-effect logistic regression",
+    title: "Degrees-of-Freedom Approximation Comparison",
     tech: "SAS",
     detail:
-      "SAS macro for meta-analysis settings; grid search evaluating Kenward-Roger and Between-Within approximations under varying cluster sizes.",
+      "Built a SAS macro and grid search to compare Kenward-Roger and Between-Within approximations across cluster sizes, improving predictive accuracy in a mixed-effects logistic regression meta-analysis context.",
   },
   {
-    title: "Drone Delivery Service",
-    tech: "Java / Spring Boot",
+    title: "Fresh Produce Delivery Management System",
+    tech: "Java / Spring Boot / Docker",
     detail:
-      "REST backend for order placement, delivery tracking and returns; Docker multi-instance deployment with Nginx reverse proxying.",
+      "Built a delivery management backend from scratch using Java, Spring Boot and REST APIs for order placement, delivery tracking and returns; containerized with Docker and configured Nginx as a load balancer for high-concurrency traffic.",
     href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
 const skillGroups = [
   {
-    label: "SFT and RL",
-    items: ["SFT", "RL", "GRPO", "PPO", "Reward Modeling"],
+    label: "Core",
+    items: ["Python", "SQL", "PyTorch", "LangGraph", "DeepSpeed", "vLLM"],
   },
   {
-    label: "LLM systems",
-    items: ["LangGraph", "Tool Calling", "Agentic RAG", "MCP", "Text-to-SQL"],
+    label: "Post-training and RL",
+    items: ["SFT", "GRPO", "PPO", "Reward Modeling", "FSDP", "Distributed Training"],
   },
   {
-    label: "Deep learning",
-    items: ["PyTorch", "DeepSpeed", "vLLM", "Transformers"],
+    label: "Agentic AI and LLM systems",
+    items: ["Tool Calling", "RAG", "MCP", "Text-to-SQL"],
   },
   {
-    label: "Engineering and statistics",
-    items: ["Python", "SQL", "R", "Java", "SAS", "Docker", "MySQL", "Redis", "AWS"],
+    label: "Also familiar with",
+    items: ["R", "Java", "SAS", "Docker", "Nginx", "MySQL", "Redis", "AWS", "ETL Pipelines"],
   },
 ];
 
@@ -169,12 +172,12 @@ const education = [
   {
     degree: "M.S. Computer Science",
     school: "Georgia Institute of Technology",
-    year: "Aug 2026",
+    year: "Aug 2023 - Aug 2026",
   },
   {
     degree: "M.S. Biostatistics",
     school: "University of North Carolina at Chapel Hill",
-    year: "May 2021",
+    year: "Aug 2019 - May 2021",
   },
   {
     degree: "B.S. Biological Science",
@@ -194,17 +197,17 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-inner">
-          <span className="hero-tag">SFT / RL / LLM Systems</span>
+          <span className="hero-tag">SFT / GRPO / Agentic Systems</span>
           <h1>Haoming Zhang</h1>
-          <p className="hero-role">AI Research Engineer</p>
+          <p className="hero-role">AI Research Engineer | Atlanta, GA</p>
           <p className="hero-bio">
-            AI engineer specializing in LLM post-training and agentic systems.
-            I work across the agent lifecycle: RL data pipelines, reward
-            modeling, execution-guided SQL/DAG optimization, inference
-            profiling, and deployment-facing reliability. My background in
-            statistical modeling and clinical-trial analytics helps me evaluate
-            model behavior carefully: reading metrics, defining failure cases,
-            and avoiding overclaiming.
+            AI engineer specializing in LLM post-training and agentic systems,
+            with hands-on experience across the full agent lifecycle: RL data
+            pipelines, reward modeling, execution-guided optimization and
+            deployment-facing reliability. I bring four years of statistical
+            modeling experience from FDA-regulated clinical trials to
+            evaluation, experimental design and RL for LLM agents while
+            completing an M.S. in Computer Science at Georgia Tech.
           </p>
           <div className="hero-links">
             <a className="hero-link" href="mailto:zhm0044@gmail.com">
@@ -219,6 +222,15 @@ export default function Home() {
             >
               <Linkedin aria-hidden="true" />
               LinkedIn
+            </a>
+            <a
+              className="hero-link"
+              href="https://github.com/hz1957"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github aria-hidden="true" />
+              GitHub
             </a>
           </div>
         </div>
@@ -317,7 +329,7 @@ export default function Home() {
         </section>
 
         <section className="cv-section" id="research">
-          <h2 className="cv-section-title">Education and Articles</h2>
+          <h2 className="cv-section-title">Education and Publication</h2>
           <div className="edu-pub-grid">
             <div className="edu-block">
               <h3>Degrees</h3>
@@ -332,7 +344,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="pub-block">
-              <h3>Articles</h3>
+              <h3>Publication</h3>
               <div className="article-list">
                 <article className="pub-entry">
                   <p>
@@ -350,21 +362,6 @@ export default function Home() {
                     doi:10.17615/x61s-er87
                   </a>
                 </article>
-                <article className="pub-entry">
-                  <p>
-                    Degrees of Freedom Estimation in the Meta-analysis of
-                    Sensitivity and Specificity in Diagnosis Medicine. 2021.
-                  </p>
-                  <a
-                    className="pub-doi"
-                    href={dofPaperHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FileText aria-hidden="true" />
-                    Full article (PDF)
-                  </a>
-                </article>
               </div>
             </div>
           </div>
@@ -373,7 +370,7 @@ export default function Home() {
 
       <div className="contact-bar" id="contact">
         <p className="contact-note">
-          Open to roles in model training, LLM systems, and data automation.
+          Open to roles in LLM post-training, agentic AI, and evaluation-heavy model systems.
         </p>
       </div>
     </main>
