@@ -1,6 +1,8 @@
 import { ArrowUpRight, BookOpen, FileText, Github, Linkedin, Mail } from "lucide-react";
 import type { CSSProperties } from "react";
 
+const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
+
 type StarStyle = CSSProperties & Record<`--${string}`, string>;
 
 const seeded = (seed: number) => {
@@ -151,20 +153,32 @@ const projects = [
 
 const skillGroups = [
   {
-    label: "Core",
-    items: ["Python", "SQL", "PyTorch", "LangGraph", "DeepSpeed", "vLLM"],
+    label: "LLM Post-Training & RL",
+    items: ["SFT", "LoRA", "GRPO", "PPO", "Reward Modeling", "Execution-Based Rewards", "verl"],
   },
   {
-    label: "Post-training and RL",
-    items: ["SFT", "GRPO", "PPO", "Reward Modeling", "FSDP", "Distributed Training"],
+    label: "Distributed Training & Inference",
+    items: [
+      "PyTorch",
+      "DeepSpeed ZeRO-3",
+      "FSDP",
+      "Ray",
+      "vLLM",
+      "FlashAttention",
+      "Activation Checkpointing",
+    ],
   },
   {
-    label: "Agentic AI and LLM systems",
-    items: ["Tool Calling", "RAG", "MCP", "Text-to-SQL"],
+    label: "Agentic & Retrieval Systems",
+    items: ["LangGraph", "Tool Calling", "MCP", "Text-to-SQL", "RAG", "Milvus", "BM25"],
   },
   {
-    label: "Also familiar with",
-    items: ["R", "Java", "SAS", "Docker", "Nginx", "MySQL", "Redis", "AWS", "ETL Pipelines"],
+    label: "Programming, Data & Infrastructure",
+    items: ["Python", "SQL", "PySpark", "Docker", "AWS", "MySQL", "Redis", "Nginx"],
+  },
+  {
+    label: "Statistical Computing & Software Development",
+    items: ["R", "SAS", "Java", "Spring Boot"],
   },
 ];
 
@@ -201,13 +215,15 @@ export default function Home() {
           <h1>Haoming Zhang</h1>
           <p className="hero-role">AI Research Engineer | Atlanta, GA</p>
           <p className="hero-bio">
-            AI engineer specializing in LLM post-training and agentic systems,
-            with hands-on experience across the full agent lifecycle: RL data
-            pipelines, reward modeling, execution-guided optimization and
-            deployment-facing reliability. I bring four years of statistical
-            modeling experience from FDA-regulated clinical trials to
-            evaluation, experimental design and RL for LLM agents while
-            completing an M.S. in Computer Science at Georgia Tech.
+            AI engineer with master's degrees in Computer Science and
+            Biostatistics, specializing in LLM post-training and agentic
+            systems, with hands-on experience across the full agent lifecycle:
+            RL data pipelines and reward modeling, execution-guided
+            optimization and deployment. Brings a strong quantitative
+            foundation from a prior statistics career (4 years designing
+            statistical analysis and survival models for FDA-regulated clinical
+            trials), now applied to evaluation, experimental design, SFT and RL
+            for LLM agents.
           </p>
           <div className="hero-links">
             <a className="hero-link" href="mailto:zhm0044@gmail.com">
@@ -329,7 +345,7 @@ export default function Home() {
         </section>
 
         <section className="cv-section" id="research">
-          <h2 className="cv-section-title">Education and Publication</h2>
+          <h2 className="cv-section-title">Education and Publications</h2>
           <div className="edu-pub-grid">
             <div className="edu-block">
               <h3>Degrees</h3>
@@ -344,7 +360,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="pub-block">
-              <h3>Publication</h3>
+              <h3>Publications</h3>
               <div className="article-list">
                 <article className="pub-entry">
                   <p>
@@ -360,6 +376,21 @@ export default function Home() {
                   >
                     <BookOpen aria-hidden="true" />
                     doi:10.17615/x61s-er87
+                  </a>
+                </article>
+                <article className="pub-entry">
+                  <p>
+                    Degrees of Freedom Estimation in the Meta-analysis of
+                    Sensitivity and Specificity in Diagnosis Medicine. 2021.
+                  </p>
+                  <a
+                    className="pub-doi"
+                    href={dofPaperHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FileText aria-hidden="true" />
+                    Full article (PDF)
                   </a>
                 </article>
               </div>
