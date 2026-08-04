@@ -56,7 +56,7 @@ type PortfolioContent = {
     skills: string;
     research: string;
     degrees: string;
-    publications: string;
+    articles: string;
   };
   trainingWork: TrainingItem[];
   agentWork: string[];
@@ -440,9 +440,9 @@ const portfolioContent: Record<Language, PortfolioContent> = {
       experience: "Experience",
       projects: "Selected Projects",
       skills: "Technical Skills",
-      research: "Education and Publications",
+      research: "Education and Articles",
       degrees: "Degrees",
-      publications: "Publications",
+      articles: "Articles",
     },
     trainingWork: trainingWorkEn,
     agentWork: agentWorkEn,
@@ -470,9 +470,9 @@ const portfolioContent: Record<Language, PortfolioContent> = {
       experience: "工作经历",
       projects: "项目经历",
       skills: "技术技能",
-      research: "教育背景与发表论文",
+      research: "教育背景与文章",
       degrees: "教育背景",
-      publications: "发表论文",
+      articles: "文章",
     },
     trainingWork: trainingWorkZh,
     agentWork: agentWorkZh,
@@ -640,7 +640,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="pub-block">
-              <h3>{content.sections.publications}</h3>
+              <h3>{content.sections.articles}</h3>
               <div className="article-list">
                 <article className="pub-entry">
                   <p>

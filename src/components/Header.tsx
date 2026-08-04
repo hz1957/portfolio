@@ -18,7 +18,7 @@ const navItems = {
     ["#agents", "智能体"],
     ["#work", "经历"],
     ["#projects", "项目"],
-    ["#research", "教育与论文"],
+    ["#research", "教育与文章"],
   ],
 } satisfies Record<Language, Array<[string, string]>>;
 
