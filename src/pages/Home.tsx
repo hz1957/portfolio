@@ -267,9 +267,9 @@ const educationEn: Education[] = [
 
 const trainingWorkZh: TrainingItem[] = [
   {
-    title: "Qwen-Coder SQL 专项模型",
+    title: "SQL Subagent 监督微调",
     detail:
-      "使用 LoRA 在经执行验证的 Spider SQL 轨迹上微调 Qwen-Coder SQL 模型，结合 DeepSpeed、FlashAttention 和激活检查点，提升 SQL 生成的执行准确性。",
+      "基于经执行验证的 Spider SQL 轨迹，使用 LoRA 微调 Qwen2.5-Coder，并结合 DeepSpeed ZeRO-3、FlashAttention 和激活检查点提升 SQL 执行准确性。",
   },
   {
     title: "基于轨迹的强化学习流程",
@@ -279,7 +279,7 @@ const trainingWorkZh: TrainingItem[] = [
   {
     title: "执行奖励驱动的 GRPO",
     detail:
-      "在 verl 中实现以执行结果为奖励信号的 GRPO 后训练，比较奖励方案、KL 系数、PPO epoch 和 rollout 配置；Tree Search rollout 提升了执行可靠性，并减少 rollout 资源消耗。",
+      "在 verl 中实现以执行结果为奖励信号的 GRPO 后训练，系统比较奖励方案、KL 系数、PPO epoch 和 rollout 配置；Tree Search rollout 进一步提升执行可靠性与资源效率。",
   },
   {
     title: "训练系统优化",
@@ -289,7 +289,7 @@ const trainingWorkZh: TrainingItem[] = [
 ];
 
 const agentWorkZh = [
-  "开发基于 LLM 的 ETL 智能体，将自然语言描述的数据转换需求转化为可执行的 JSON DAG，供可视化拖拽式工作流画布使用，并支持管线创建与迭代修改。",
+  "设计 LLM ETL 智能体的整体架构，将自然语言数据转换需求映射为可执行 JSON DAG，并重点负责 SQL subagent 的后训练与评估。",
   "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈和 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
   "设计面向企业知识检索的混合 RAG 流程，集成 MinerU PDF 解析、基于 Milvus 的 BGE 检索、BM25 召回、RRF 融合及 BGE 重排序。",
 ];
@@ -301,12 +301,12 @@ const experiencesZh: Experience[] = [
     place: "上海",
     period: "2025 年 6 月 - 2026 年 5 月",
     points: [
-      "开发基于 LLM 的 ETL 智能体，将自然语言需求转换为可执行的 JSON DAG，支持工作流创建与迭代修改。",
-      "基于 LangGraph 构建 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证。",
-      "使用 LoRA 在经执行验证的 Spider SQL 轨迹上微调 Qwen-Coder SQL 模型，提升 SQL 生成的执行准确性。",
+      "面向 LLM ETL 智能体，设计将自然语言数据转换需求映射为可执行 JSON DAG 的整体架构，重点负责 SQL subagent 的后训练与评估。",
+      "基于经执行验证的 Spider SQL 轨迹，使用 LoRA 微调 Qwen2.5-Coder，并结合分布式训练与内存优化技术提升 SQL 执行准确性。",
       "搭建面向业务 ETL 任务、基于轨迹的强化学习流程，支持链式 rollout 和多分支 Tree Search rollout。",
-      "在 verl 中实现基于执行奖励和 Tree Search rollout 的 GRPO 后训练。",
-      "优化 verl/Ray/vLLM 训练阶段，缩短 Actor-to-vLLM 同步延迟和 actor-update 开销。",
+      "在 verl 中实现以执行结果为奖励信号的 GRPO 后训练，并围绕奖励、KL、PPO epoch 与 rollout 配置开展对照实验。",
+      "通过分阶段性能剖析优化 verl/Ray/vLLM 训练流程，降低 Actor-to-vLLM 与 actor-update 延迟并解决内存瓶颈。",
+      "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
       "设计面向企业知识检索的混合 RAG 流程，集成 MinerU PDF 解析、基于 Milvus 的 BGE 检索、BM25 召回、RRF 融合及 BGE 重排序。",
     ],
   },
@@ -464,7 +464,7 @@ const portfolioContent: Record<Language, PortfolioContent> = {
       emailLabel: "邮箱",
     },
     sections: {
-      training: "面向 SQL 生成的监督微调与强化学习",
+      training: "SQL Subagent 后训练与评估",
       trainingTag: "核心方向",
       agents: "LLM 智能体系统",
       experience: "工作经历",
