@@ -269,7 +269,7 @@ const trainingWorkZh: TrainingItem[] = [
   {
     title: "Qwen-Coder SQL 专项模型",
     detail:
-      "使用 LoRA 在 4×H100 和 4×H200 节点上微调 Qwen2.5-Coder-14B，训练数据采用经执行验证的 Spider SQL 轨迹；结合 DeepSpeed ZeRO-3、FlashAttention 和激活检查点，将执行准确率从 68% 提升至 80%。",
+      "使用 LoRA 在经执行验证的 Spider SQL 轨迹上微调 Qwen-Coder SQL 模型，结合 DeepSpeed、FlashAttention 和激活检查点，提升 SQL 生成的执行准确性。",
   },
   {
     title: "基于轨迹的强化学习流程",
@@ -279,7 +279,7 @@ const trainingWorkZh: TrainingItem[] = [
   {
     title: "执行奖励驱动的 GRPO",
     detail:
-      "在 verl 中实现以执行结果为奖励信号的 GRPO 后训练。围绕奖励方案、KL 系数、PPO epoch 和 rollout 配置，在 4×H100 上设计对照实验；Tree GRPO 的执行准确率达到 84%，链式 n=8 方案在减少 60% rollout 槽位的情况下达到 83.33%。",
+      "在 verl 中实现以执行结果为奖励信号的 GRPO 后训练，比较奖励方案、KL 系数、PPO epoch 和 rollout 配置；Tree Search rollout 提升了执行可靠性，并减少 rollout 资源消耗。",
   },
   {
     title: "训练系统优化",
