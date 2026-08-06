@@ -24,8 +24,14 @@ export default function Root() {
 
   const handleLanguageChange = (nextLanguage: Language) => {
     if (nextLanguage === language) return;
+    const pathWithoutLanguage = location.pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
+    const nextPath =
+      nextLanguage === "zh"
+        ? `/zh${pathWithoutLanguage === "/" ? "/" : pathWithoutLanguage}`
+        : pathWithoutLanguage;
+
     navigate({
-      pathname: nextLanguage === "zh" ? "/zh/" : "/",
+      pathname: nextPath,
       hash: location.hash,
     });
   };

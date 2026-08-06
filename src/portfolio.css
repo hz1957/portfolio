@@ -103,6 +103,11 @@ html {
   background: var(--surface-soft);
 }
 
+.main-nav a.is-active {
+  color: var(--accent-hover);
+  background: #dfecea;
+}
+
 .language-switch {
   display: grid;
   grid-template-columns: 36px 44px;
@@ -254,6 +259,28 @@ html {
   padding-bottom: 58px;
 }
 
+.page-intro {
+  padding: 42px 0 6px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.page-intro h1 {
+  margin: 0;
+  color: var(--heading);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.page-intro p {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: #516067;
+  font-size: 0.9rem;
+  line-height: 1.72;
+}
+
 .cv-section {
   padding-top: 38px;
 }
@@ -396,6 +423,35 @@ html {
 .project-links a svg {
   width: 12px;
   height: 12px;
+}
+
+.home-route-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-route-links a {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--heading);
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 130ms ease, color 130ms ease, background 130ms ease;
+}
+
+.home-route-links a:hover {
+  border-color: #9eb1ac;
+  background: #f8fbfa;
+  color: var(--accent-hover);
 }
 
 .plain-bullets {
@@ -579,6 +635,48 @@ html {
   text-transform: uppercase;
 }
 
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contact-method {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 130ms ease, background 130ms ease;
+}
+
+.contact-method:hover {
+  border-color: #9eb1ac;
+  background: #f8fbfa;
+}
+
+.contact-method svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.contact-method span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.contact-method strong {
+  overflow-wrap: anywhere;
+  color: var(--heading);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
 .site-footer {
   border-top: 1px solid var(--line-soft);
   background: #f1f5f3;
@@ -624,6 +722,11 @@ html {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+  }
+
+  .home-route-links,
+  .contact-list {
+    grid-template-columns: 1fr;
   }
 }
 

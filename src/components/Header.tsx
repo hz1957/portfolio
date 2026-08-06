@@ -1,5 +1,5 @@
 import type { Language } from "../language";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 type HeaderProps = {
   language: Language;
@@ -8,23 +8,33 @@ type HeaderProps = {
 
 const navItems = {
   en: [
-    ["#training", "Highlights"],
-    ["#work", "Experience"],
-    ["#projects", "Projects"],
-    ["#skills", "Skills"],
-    ["#research", "Education & Articles"],
+    ["/", "Home"],
+    ["/experience", "Experience"],
+    ["/projects", "Projects"],
+    ["/publications", "Education & Articles"],
+    ["/contact", "Contact"],
   ],
   zh: [
-    ["#training", "亮点"],
-    ["#work", "经历"],
-    ["#projects", "项目"],
-    ["#skills", "技能"],
-    ["#research", "教育与文章"],
+    ["/zh/", "主页"],
+    ["/zh/experience", "经历"],
+    ["/zh/projects", "项目"],
+    ["/zh/publications", "教育与文章"],
+    ["/zh/contact", "联系"],
   ],
 } satisfies Record<Language, Array<[string, string]>>;
 
 export function Header({ language, onLanguageChange }: HeaderProps) {
   const isChinese = language === "zh";
+  const location = useLocation();
+  const currentPath = location.pathname.replace(/\/+$/, "") || "/";
+
+  const isActive = (path: string) => {
+    const targetPath = path.replace(/\/+$/, "") || "/";
+    if (targetPath === "/" || targetPath === "/zh") {
+      return currentPath === targetPath;
+    }
+    return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
+  };
 
   return (
     <header className="site-header">
@@ -43,9 +53,9 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
 
         <div className="main-nav">
           {navItems[language].map(([href, label]) => (
-            <a href={href} key={href}>
+            <Link className={isActive(href) ? "is-active" : undefined} to={href} key={href}>
               {label}
-            </a>
+            </Link>
           ))}
         </div>
 

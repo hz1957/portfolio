@@ -1,8 +1,8 @@
-import { ArrowUpRight, BookOpen, FileText, Github, Linkedin, Mail } from "lucide-react";
-import { useOutletContext } from "react-router";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { Link, useOutletContext } from "react-router";
 import type { Language, LanguageOutletContext } from "../language";
 
-const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
+export const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
 
 type TrainingItem = {
   title: string;
@@ -456,7 +456,7 @@ const educationZh: Education[] = [
   },
 ];
 
-const portfolioContent: Record<Language, PortfolioContent> = {
+export const portfolioContent: Record<Language, PortfolioContent> = {
   en: {
     hero: {
       tag: "Agentic AI / LLM Systems / Intelligent Data Automation",
@@ -522,6 +522,7 @@ const portfolioContent: Record<Language, PortfolioContent> = {
 export default function Home() {
   const { language } = useOutletContext<LanguageOutletContext>();
   const content = portfolioContent[language];
+  const routePrefix = language === "zh" ? "/zh" : "";
 
   return (
     <main className="portfolio-page">
@@ -585,134 +586,11 @@ export default function Home() {
           </section>
         )}
 
-        <section className="cv-section" id="work">
-          <h2 className="cv-section-title">{content.sections.experience}</h2>
-          <div className="exp-entries">
-            {content.experiences.map((item) => (
-              <div className="exp-entry" key={`${item.role}-${item.company}`}>
-                <div className="exp-meta">
-                  <div className="exp-role">{item.role}</div>
-                  <div className="exp-company">
-                    {item.company}
-                    {item.place ? ` / ${item.place}` : ""}
-                  </div>
-                  <span className="exp-period">{item.period}</span>
-                </div>
-                <ul className="exp-points">
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="cv-section" id="projects">
-          <h2 className="cv-section-title">{content.sections.projects}</h2>
-          <div className="project-entries">
-            {content.projects.map((project) => (
-              <div className="project-entry" key={project.title}>
-                <div className="project-name">
-                  <span>{project.title}</span>
-                  <span className="project-tech">{project.tech}</span>
-                  <div className="project-links">
-                    {project.href && (
-                      <a href={project.href} target="_blank" rel="noopener noreferrer">
-                        <ArrowUpRight aria-hidden="true" />
-                        {content.codeLabel}
-                      </a>
-                    )}
-                    {project.reportHref && (
-                      <a
-                        href={project.reportHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FileText aria-hidden="true" />
-                        {content.reportLabel}
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <div className="project-content">
-                  {project.detail && <p className="project-detail">{project.detail}</p>}
-                  {project.points && (
-                    <ul className="project-points">
-                      {project.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="cv-section" id="skills">
-          <h2 className="cv-section-title">{content.sections.skills}</h2>
-          <div className="skill-entries">
-            {content.skillGroups.map((group) => (
-              <div className="skill-entry" key={group.label}>
-                <div className="skill-label">{group.label}</div>
-                <div className="skill-items">{group.items.join(" / ")}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="cv-section" id="research">
-          <h2 className="cv-section-title">{content.sections.research}</h2>
-          <div className="edu-pub-grid">
-            <div className="edu-block">
-              <h3>{content.sections.degrees}</h3>
-              <ul className="edu-list">
-                {content.education.map((item) => (
-                  <li key={item.degree}>
-                    <span className="edu-degree">{item.degree}</span>
-                    <span className="edu-school">{item.school}</span>
-                    <span className="edu-school">{item.year}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="pub-block">
-              <h3>{content.sections.articles}</h3>
-              <div className="article-list">
-                <article className="pub-entry">
-                  <p>
-                    Household Transmission of SARS-CoV-2 in the United States:
-                    Living Density, Viral Load, and Disproportionate Impact on
-                    Communities of Color. 2021.
-                  </p>
-                  <a
-                    className="pub-doi"
-                    href="https://doi.org/10.17615/x61s-er87"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <BookOpen aria-hidden="true" />
-                    doi:10.17615/x61s-er87
-                  </a>
-                </article>
-                <article className="pub-entry">
-                  <p>
-                    Degrees of Freedom Estimation in the Meta-analysis of
-                    Sensitivity and Specificity in Diagnosis Medicine. 2021.
-                  </p>
-                  <a
-                    className="pub-doi"
-                    href={dofPaperHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FileText aria-hidden="true" />
-                    {content.fullArticleLabel}
-                  </a>
-                </article>
-              </div>
-            </div>
+        <section className="cv-section" id="pages">
+          <div className="home-route-links">
+            <Link to={`${routePrefix}/experience`}>{content.sections.experience}</Link>
+            <Link to={`${routePrefix}/projects`}>{content.sections.projects}</Link>
+            <Link to={`${routePrefix}/publications`}>{content.sections.research}</Link>
           </div>
         </section>
       </div>

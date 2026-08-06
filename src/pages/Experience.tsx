@@ -1,182 +1,55 @@
-import {
-  Briefcase,
-  GraduationCap,
-  Award,
-  Code,
-} from "lucide-react";
-import { Section } from "../components/Section";
-import { ExperienceCard } from "../components/ExperienceCard";
+import { useOutletContext } from "react-router";
+import type { LanguageOutletContext } from "../language";
+import { portfolioContent } from "./Home";
 
 export default function Experience() {
+  const { language } = useOutletContext<LanguageOutletContext>();
+  const content = portfolioContent[language];
+
   return (
-    <main className="max-w-5xl mx-auto px-6 py-20 space-y-20">
-      {/* Page Header */}
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl">My Journey</h1>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-          A combination of rigorous academic training and
-          professional experience in AI development and
-          biostatistics
-        </p>
+    <main className="portfolio-page">
+      <div className="page-body">
+        <header className="page-intro">
+          <span className="hero-tag">{content.hero.tag}</span>
+          <h1>{content.sections.experience}</h1>
+          <p>{content.hero.role}</p>
+        </header>
+
+        <section className="cv-section" id="work">
+          <h2 className="cv-section-title">{content.sections.experience}</h2>
+          <div className="exp-entries">
+            {content.experiences.map((item) => (
+              <div className="exp-entry" key={`${item.role}-${item.company}`}>
+                <div className="exp-meta">
+                  <div className="exp-role">{item.role}</div>
+                  <div className="exp-company">
+                    {item.company}
+                    {item.place ? ` / ${item.place}` : ""}
+                  </div>
+                  <span className="exp-period">{item.period}</span>
+                </div>
+                <ul className="exp-points">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cv-section" id="skills">
+          <h2 className="cv-section-title">{content.sections.skills}</h2>
+          <div className="skill-entries">
+            {content.skillGroups.map((group) => (
+              <div className="skill-entry" key={group.label}>
+                <div className="skill-label">{group.label}</div>
+                <div className="skill-items">{group.items.join(" / ")}</div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
-
-      {/* Work Experience Section */}
-      <Section
-        icon={<Briefcase className="w-6 h-6" />}
-        title="Work Experience"
-      >
-        <div className="space-y-8">
-          <ExperienceCard
-            title="AI Engineer"
-            company="R2.AI"
-            location="Shanghai"
-            period="June 2025 — Present"
-            current={true}
-            achievements={[
-              "Worked on a chat-based visual data transformation system where users describe data workflows in natural language and the LLM agent generates structured JSON pipelines for a front-end drag-and-drop canvas.",
-              "Designed a two-agent workflow: a conversational orchestrator for multi-turn intent understanding and session state management, and a pipeline-generation agent for producing and revising executable workflow JSON.",
-              "Built a tool-call-based loop with intent-specific tool selection, structured execution feedback, and self-correction logic to repair failed or invalid pipeline steps.",
-              "Agent Memory & Tiered Retrieval: Designed a context system with short-term conversation history, LLM-scored long-term memory and structured domain knowledge. MCP-wrapped Traditional RAG serves as the fast retrieval path, with Agentic RAG fallback for progressive multi-hop skill document search on insufficient context.",
-              "Developed GRPO-style post-training for Qwen Coder 1.5B with AgentLightning to improve self-correcting SQL generation for Spark-executable data transformation tasks.",
-              "LLM Inference Optimization: Enforced output determinism via structured outputs with JSON Schema constrained decoding and downstream validation; Profiled LLM inference performance in agentic workflows, measuring TTFT, end-to-end latency, token throughput, and cache-reuse effects under varying concurrency and shared-prefix patterns.",
-            ]}
-          />
-
-          <ExperienceCard
-            title="Statistician"
-            company="Parexel"
-            location="Durham, NC"
-            period="July 2021 — Feb 2025"
-            current={false}
-            achievements={[
-              "Conducted statistical modeling for oncology and neurology clinical trials, building and maintaining survival models (Cox regression, Kaplan–Meier) and causal inference models (propensity score, IPTW) for over 2,000 patients; handled missing data to support efficacy evaluation and risk prediction",
-              "Designed and implemented linear and generalized linear mixed-effects models, as well as ANCOVA, for neurological clinical trials to analyze changes in cognitive scores and guide dose adjustment",
-              "Integrated large-scale data from electronic medical records, lab tests, and follow-up logs using SQL and R to conduct in-depth analysis and study variable patterns and subject-level outcomes",
-              "Designed and analyzed hypothesis testing (A/B testing) using multivariable mixed-effects models to evaluate causal effects and compare multiple treatment strategies across diseases",
-              "Developed SQL, R, and SAS programs for data analysis and visualization, producing high-quality deliverables for regulatory submission",
-              "Designed data simulations and sample size calculations in R for dose-escalation (3+3, mTPI-2) and Phase III trials with multiple comparisons and interim analysis",
-              "Authored and reviewed Statistical Analysis Plans (SAPs), defining statistical methods, study endpoints, and timelines to ensure clarity, traceability, and compliance in data reporting",
-            ]}
-          />
-        </div>
-      </Section>
-
-      {/* Education Section */}
-      <Section
-        icon={<GraduationCap className="w-6 h-6" />}
-        title="Education"
-      >
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-              <GraduationCap className="w-6 h-6 text-blue-600" />
-            </div>
-            <h3 className="text-xl mb-2">Master of Science</h3>
-            <p className="text-slate-600 mb-2">
-              Computer Science
-            </p>
-            <p className="text-sm text-slate-500 leading-relaxed">
-              Focus on Artificial Intelligence and Machine
-              Learning, with expertise in natural language
-              processing, deep learning, and intelligent systems
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-              <GraduationCap className="w-6 h-6 text-purple-600" />
-            </div>
-            <h3 className="text-xl mb-2">Master of Science</h3>
-            <p className="text-slate-600 mb-2">Biostatistics</p>
-            <p className="text-sm text-slate-500 leading-relaxed">
-              Statistical methods for clinical research,
-              including survival analysis, mixed-effects models,
-              and experimental design
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Technical Skills */}
-      <Section
-        icon={<Code className="w-6 h-6" />}
-        title="Technical Skills"
-      >
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
-            <h3 className="mb-3">Agentic AI & LLMs</h3>
-            <ul className="space-y-1 text-sm text-slate-700">
-              <li>• Multi-Agent Orchestration</li>
-              <li>• LangGraph & Tool-Calling</li>
-              <li>• Agentic RAG & MCP</li>
-              <li>• Agent Memory Systems</li>
-              <li>• Prompt Engineering</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
-            <h3 className="mb-3">RL & Post-Training</h3>
-            <ul className="space-y-1 text-sm text-slate-700">
-              <li>• RLHF & GRPO</li>
-              <li>• PPO (AgentLightning)</li>
-              <li>• Reward Modeling</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
-            <h3 className="mb-3">Programming</h3>
-            <ul className="space-y-1 text-sm text-slate-700">
-              <li>• Python</li>
-              <li>• Java & Spring Boot</li>
-              <li>• SQL & R</li>
-              <li>• SAS</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6">
-            <h3 className="mb-3">Systems & Infra</h3>
-            <ul className="space-y-1 text-sm text-slate-700">
-              <li>• Docker & Nginx & AWS</li>
-              <li>• MySQL & Redis</li>
-              <li>• SGLang & JSON Schema</li>
-              <li>• ETL Pipelines</li>
-              <li>• Playwright</li>
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      {/* Key Achievements */}
-      <Section
-        icon={<Award className="w-6 h-6" />}
-        title="Key Achievements"
-      >
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-4xl mb-2 text-blue-600">
-              4%
-            </div>
-            <p className="text-slate-700">
-              Hallucination rate after JSON-Schema guardrails (down from 30%)
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-4xl mb-2 text-purple-600">
-              90%+
-            </div>
-            <p className="text-slate-700">
-              Token-level accuracy on medical NER (Chinese-MacBERT, CMeEE)
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-4xl mb-2 text-green-600">
-              2,000+
-            </div>
-            <p className="text-slate-700">
-              Patients analyzed across oncology &amp; neurology trials
-            </p>
-          </div>
-        </div>
-      </Section>
     </main>
   );
 }
