@@ -24,28 +24,24 @@ export default function Root() {
 
   const handleLanguageChange = (nextLanguage: Language) => {
     if (nextLanguage === language) return;
-    const pathWithoutLanguage = location.pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
-    const nextPath =
-      nextLanguage === "zh"
-        ? `/zh${pathWithoutLanguage === "/" ? "/" : pathWithoutLanguage}`
-        : pathWithoutLanguage;
-
     navigate({
-      pathname: nextPath,
+      pathname: nextLanguage === "zh" ? "/zh/" : "/",
       hash: location.hash,
     });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="portfolio-root">
       <ScrollToTop />
       <Header language={language} onLanguageChange={handleLanguageChange} />
       <Outlet context={{ language }} />
-      <footer className="bg-slate-900 text-slate-400 py-8 mt-20">
-        <div className="max-w-5xl mx-auto px-6 text-center">
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <p>{language === "zh" ? "张昊明 - AI 工程师" : "Haoming Zhang - AI Research Engineer"}</p>
           <p>
-            &copy; 2026 {language === "zh" ? "张昊明" : "Haoming Zhang"}.{" "}
-            {language === "zh" ? "保留所有权利。" : "All rights reserved."}
+            {language === "zh"
+              ? "专注于智能体系统、大语言模型后训练与智能数据自动化。"
+              : "Built around agentic AI, post-training, data automation, and statistical rigor."}
           </p>
         </div>
       </footer>

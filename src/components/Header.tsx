@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router";
 import type { Language } from "../language";
+import { Link } from "react-router";
 
 type HeaderProps = {
   language: Language;
@@ -8,82 +8,64 @@ type HeaderProps = {
 
 const navItems = {
   en: [
-    ["/", "Home"],
-    ["/experience", "Experience"],
-    ["/projects", "Projects"],
-    ["/publications", "Publications"],
-    ["/contact", "Contact"],
+    ["#training", "Highlights"],
+    ["#work", "Experience"],
+    ["#projects", "Projects"],
+    ["#skills", "Skills"],
+    ["#research", "Education & Articles"],
   ],
   zh: [
-    ["/zh/", "主页"],
-    ["/zh/experience", "经历"],
-    ["/zh/projects", "项目"],
-    ["/zh/publications", "文章"],
-    ["/zh/contact", "联系"],
+    ["#training", "亮点"],
+    ["#work", "经历"],
+    ["#projects", "项目"],
+    ["#skills", "技能"],
+    ["#research", "教育与文章"],
   ],
 } satisfies Record<Language, Array<[string, string]>>;
 
 export function Header({ language, onLanguageChange }: HeaderProps) {
-  const location = useLocation();
   const isChinese = language === "zh";
-  const currentPath = location.pathname.replace(/\/+$/, "") || "/";
-
-  const isActive = (path: string) => {
-    const targetPath = path.replace(/\/+$/, "") || "/";
-    if (targetPath === "/" || targetPath === "/zh") {
-      return currentPath === targetPath;
-    }
-    return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
-  };
 
   return (
-    <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
-      <nav className="max-w-5xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center gap-6 flex-wrap">
-          <Link to={isChinese ? "/zh/" : "/"} className="text-xl text-slate-900">
-            HZ
-          </Link>
-          <div className="flex gap-4 items-center flex-wrap">
-            {navItems[language].map(([path, label]) => (
-              <Link
-                key={path}
-                to={path}
-                className={`transition-colors ${
-                  isActive(path) ? "text-slate-900" : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-            <a
-              href="https://hz1957.github.io/AI-Notes"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-600 hover:text-slate-900 transition-colors"
-            >
-              AI Notes
+    <header className="site-header">
+      <nav className="header-inner" aria-label={isChinese ? "主导航" : "Primary"}>
+        <Link
+          to={isChinese ? "/zh/" : "/"}
+          className="brand-link"
+          aria-label={isChinese ? "张昊明主页" : "Haoming Zhang home"}
+        >
+          <span className="brand-mark">HZ</span>
+          <span className="brand-text">
+            <span>{isChinese ? "张昊明" : "Haoming Zhang"}</span>
+            <small>{isChinese ? "AI 工程师" : "AI Research Engineer"}</small>
+          </span>
+        </Link>
+
+        <div className="main-nav">
+          {navItems[language].map(([href, label]) => (
+            <a href={href} key={href}>
+              {label}
             </a>
-            <div className="flex gap-2 border border-slate-200 rounded-lg p-1 bg-white">
-              <button
-                type="button"
-                className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                  language === "en" ? "bg-slate-900 text-white" : "text-slate-600 hover:text-slate-900"
-                }`}
-                onClick={() => onLanguageChange("en")}
-              >
-                EN
-              </button>
-              <button
-                type="button"
-                className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                  language === "zh" ? "bg-slate-900 text-white" : "text-slate-600 hover:text-slate-900"
-                }`}
-                onClick={() => onLanguageChange("zh")}
-              >
-                中文
-              </button>
-            </div>
-          </div>
+          ))}
+        </div>
+
+        <div className="language-switch" role="group" aria-label={isChinese ? "语言" : "Language"}>
+          <button
+            type="button"
+            className={language === "en" ? "is-active" : undefined}
+            aria-pressed={language === "en"}
+            onClick={() => onLanguageChange("en")}
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            className={language === "zh" ? "is-active" : undefined}
+            aria-pressed={language === "zh"}
+            onClick={() => onLanguageChange("zh")}
+          >
+            中文
+          </button>
         </div>
       </nav>
     </header>

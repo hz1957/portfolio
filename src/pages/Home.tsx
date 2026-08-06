@@ -1,9 +1,11 @@
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-import { Link, useOutletContext } from "react-router";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ArrowUpRight, BookOpen, FileText, Github, Linkedin, Mail } from "lucide-react";
+import type { CSSProperties } from "react";
+import { useOutletContext } from "react-router";
 import type { Language, LanguageOutletContext } from "../language";
 
-export const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
+const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
+
+type StarStyle = CSSProperties & Record<`--${string}`, string>;
 
 type TrainingItem = {
   title: string;
@@ -69,6 +71,42 @@ type PortfolioContent = {
   contactNote: string;
 };
 
+const seeded = (seed: number) => {
+  const value = Math.sin(seed * 12.9898) * 43758.5453;
+  return value - Math.floor(value);
+};
+
+const stars = Array.from({ length: 42 }, (_, index) => {
+  const small = index < 24;
+  const medium = index >= 24 && index < 36;
+  const sizeBase = small ? 1.1 : medium ? 2 : 3.4;
+  const sizeRange = small ? 1.3 : medium ? 1.9 : 3.2;
+  const alphaBase = small ? 0.28 : medium ? 0.36 : 0.42;
+  const alphaRange = small ? 0.38 : medium ? 0.42 : 0.34;
+  const duration = small ? 15 + seeded(index + 1) * 18 : medium ? 12 + seeded(index + 2) * 14 : 9 + seeded(index + 3) * 10;
+  const twinkle = small ? 2.5 + seeded(index + 4) * 3.6 : medium ? 2 + seeded(index + 5) * 3 : 1.8 + seeded(index + 6) * 2.6;
+  const dx = (seeded(index + 7) - 0.5) * (small ? 28 : medium ? 38 : 52);
+  const dy = (seeded(index + 8) - 0.5) * (small ? 22 : medium ? 32 : 42);
+  const style: StarStyle = {
+    "--x": `${seeded(index + 11) * 100}vw`,
+    "--y": `${seeded(index + 23) * 100}vh`,
+    "--size": `${sizeBase + seeded(index + 31) * sizeRange}px`,
+    "--alpha": `${alphaBase + seeded(index + 41) * alphaRange}`,
+    "--duration": `${duration}s`,
+    "--twinkle": `${twinkle}s`,
+    "--delay": `${-seeded(index + 53) * duration}s`,
+    "--twinkle-delay": `${-seeded(index + 61) * twinkle}s`,
+    "--dx": `${dx}px`,
+    "--dy": `${dy}px`,
+    "--glow": `${small ? 0 : medium ? 3 + seeded(index + 71) * 4 : 6 + seeded(index + 83) * 8}px`,
+  };
+
+  return {
+    className: small ? "star star-small" : medium ? "star star-medium" : "star star-large",
+    style,
+  };
+});
+
 const trainingWorkEn: TrainingItem[] = [
   {
     title: "Agentic systems and data automation",
@@ -101,13 +139,13 @@ const experiencesEn: Experience[] = [
     place: "",
     period: "June 2025 - May 2026",
     points: [
-      "Designed the architecture for an in-development conversation-to-visual ETL platform and core agent workflows, mapping natural-language data transformation requirements to executable JSON DAGs for a Figma Make-like data transformation system. The broader orchestration layer used Qwen-Max / DeepSeek V4 for complex task planning, while I owned post-training and evaluation for the Text-to-SQL subagent.",
-      "For the Text-to-SQL subagent, fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%. Migrated the subagent from general LLM calls to the fine-tuned Qwen2.5-Coder-14B inference path, reducing upstream model concurrency pressure and improving single-step output speed by ~4x.",
+      "Designed the architecture for an in-development conversation-to-visual ETL platform and its core model post-training, mapping natural-language transformation requirements to executable JSON DAGs for a Figma Make-like generative data transformation system. Owned post-training and evaluation for the Text-to-SQL subagent, enabling non-technical researchers to build complex clinical SDTM data processing workflows.",
+      "Fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%.",
       "Built and led a trajectory-based reinforcement learning pipeline for business ETL tasks, supporting chain rollouts and multi-branch Tree Search rollouts.",
       "Implemented GRPO post-training in verl with sandbox execution outcomes as reward signals; tuned reward design, KL penalties, PPO epochs, and rollout configurations while comparing Tree Search and Chain Rollout strategies. Tree GRPO reached 84% accuracy, while optimized chain n=8 maintained 83% with 60% less rollout cost.",
       "Profiled and optimized a verl/Ray/vLLM distributed training stack, resolving high-concurrency GPU OOM bottlenecks and reducing Actor-to-vLLM synchronization and actor-update latency to improve RL-stage throughput.",
       "Designed and implemented a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
-      "Medical NLP model fine-tuning and productionization: fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
+      "Designed a hybrid RAG pipeline for enterprise knowledge retrieval integrating MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion, and BGE reranking.",
     ],
   },
   {
@@ -174,14 +212,11 @@ const projectsEn: Project[] = [
     ],
   },
   {
-    title: "Fresh Produce Delivery Management System",
-    tech: "Java / Spring Boot / Docker",
+    title: "Medical NLP Model Fine-Tuning and Productionization",
+    tech: "Python / Chinese-MacBERT / NER",
     points: [
-      "Built a fresh produce delivery management backend from scratch using Java, Spring Boot, and REST APIs for order placement, delivery tracking, and returns processing.",
-      "Used UML class and sequence diagrams for system design, separating module responsibilities to improve maintainability and extensibility.",
-      "Containerized services with Docker and configured Nginx load balancing and reverse proxying to support high-concurrency traffic.",
+      "Fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
     ],
-    href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
@@ -291,12 +326,12 @@ const experiencesZh: Experience[] = [
     place: "",
     period: "2025.06 - 2026.05",
     points: [
-      "打造“对话生成可视化” ETL 平台与核心智能体链路。主导设计类 Figma Make 的生成式数据转换系统，将自然语言数据转换需求映射为可执行 JSON DAG；平台整体编排与复杂任务规划基于 Qwen-Max / DeepSeek V4，重点负责 Text-to-SQL 子智能体的模型后训练与链路评估。",
-      "针对 Text-to-SQL 子智能体，基于 LoRA 的大规模语言模型高效微调，依托 4×H100 与 4×H200 GPU 分布式集群，使用经执行验证的 Spider SQL 轨迹高质量数据对 Qwen2.5-Coder-14B 进行指令微调。深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing 等加速技术，将模型 SQL 执行准确率从 68% 提升至 80%；并将子智能体从通用大模型调用迁移至经微调的 Qwen2.5-Coder-14B 推理链路，降低上游模型并发调用压力，使单步输出速度提升约 4 倍。",
+      "打造“对话生成可视化” ETL 平台与核心模型后训练。主导设计类 Figma Make 的生成式数据转换系统，设计将自然语言需求高精度映射为可执行 JSON DAG 的整体架构。负责 Text-to-SQL 子智能体的模型后训练与链路评估，使非技术研究人员也可自主搭建复杂的临床 SDTM 数据处理流程。",
+      "基于 LoRA 的大规模语言模型高效微调，依托 4×H100 与 4×H200 GPU 分布式集群，使用经执行验证的 Spider SQL 轨迹高质量数据对 Qwen2.5-Coder-14B 进行指令微调。深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing 等加速技术，将模型 SQL 执行准确率从 68% 提升至 80%。",
       "构建并主导基于 GRPO 的强化学习流水线（RLVR / RLAIF），在 verl 框架内实现以“沙盒执行结果”为奖励信号的 GRPO 流水线。系统性调优 Reward 机制、KL 惩罚等超参数，并对比多分支 Tree Search 与 Chain Rollout 策略。Tree GRPO 将准确率提升至 84%，优化后的链式 n=8 方案在削减 60% Rollout 开销的情况下仍保持 83%。",
       "针对 verl / Ray / vLLM 混合架构开展分布式训练链路性能剖析，定位并解决高并发下的 OOM 显存瓶颈，大幅缩短 Actor-to-vLLM 状态同步与 Actor Update 延迟，显著提升强化学习阶段的整体吞吐量。",
       "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
-      "医疗 NLP 模型微调与工程化落地：基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
+      "设计并搭建面向企业知识检索的混合 RAG 流程，集成 MinerU PDF 解析、基于 Milvus 的 BGE 检索、BM25 召回、RRF 融合及 BGE 重排序。",
     ],
   },
   {
@@ -364,14 +399,11 @@ const projectsZh: Project[] = [
     ],
   },
   {
-    title: "生鲜配送管理系统",
-    tech: "Java / Spring Boot / Docker",
+    title: "医疗 NLP 模型微调与工程化落地",
+    tech: "Python / Chinese-MacBERT / NER",
     points: [
-      "从零到一开发生鲜配送管理网站后端系统，基于 Java、Spring Boot、REST API 实现下单、配送、退货等核心业务功能。",
-      "使用 UML 类图、时序图等方法进行系统设计，合理划分模块职责，提升系统可维护性与扩展性。",
-      "通过 Docker 进行服务容器化部署，支持多实例运行，并结合 Nginx 实现负载均衡与反向代理，以应对高并发场景。",
+      "基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
     ],
-    href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
@@ -457,7 +489,7 @@ const educationZh: Education[] = [
   },
 ];
 
-export const portfolioContent: Record<Language, PortfolioContent> = {
+const portfolioContent: Record<Language, PortfolioContent> = {
   en: {
     hero: {
       tag: "Agentic AI / LLM Systems / Intelligent Data Automation",
@@ -523,129 +555,209 @@ export const portfolioContent: Record<Language, PortfolioContent> = {
 export default function Home() {
   const { language } = useOutletContext<LanguageOutletContext>();
   const content = portfolioContent[language];
-  const routePrefix = language === "zh" ? "/zh" : "";
-  const isChinese = language === "zh";
-  const homeText = {
-    about: isChinese ? "关于我" : "About Me",
-    experienceTitle: content.sections.experience,
-    experienceDescription: isChinese ? "查看我的专业经历" : "Explore my professional journey",
-    projectsTitle: content.sections.projects,
-    projectsDescription: isChinese ? "查看我的项目作品" : "View my portfolio",
-    publicationsTitle: content.sections.research,
-    publicationsDescription: isChinese ? "查看教育背景与研究文章" : "Read my education and research work",
-    learnMore: isChinese ? "了解更多" : "Learn more",
-  };
 
   return (
-    <main>
-      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1749068372456-5567c4a6bd49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYWJzdHJhY3QlMjBncmFkaWVudHxlbnwxfHx8fDE3NjQ4NDk5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-50" />
-        </div>
+    <main className="portfolio-page">
+      <div className="space-field" aria-hidden="true">
+        {stars.map((star, index) => (
+          <span className={star.className} style={star.style} key={index} />
+        ))}
+      </div>
 
-        <div className="relative z-10 text-center space-y-6 px-6 py-20">
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-5xl shadow-2xl">
-            HZ
-          </div>
-          <div>
-            <h1 className="text-5xl mb-4 text-white drop-shadow-lg">
-              {content.hero.name}
-            </h1>
-            <p className="text-xl text-slate-100 max-w-2xl mx-auto drop-shadow-md">
-              {content.hero.role}
-            </p>
-          </div>
-          <div className="flex justify-center gap-4">
-            <a
-              href="https://github.com/hz1957"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
-            >
-              <Github className="w-6 h-6" />
+      <section className="hero" id="top">
+        <div className="hero-inner">
+          <span className="hero-tag">{content.hero.tag}</span>
+          <h1>{content.hero.name}</h1>
+          <p className="hero-role">{content.hero.role}</p>
+          <p className="hero-bio">{content.hero.bio}</p>
+          <div className="hero-links">
+            <a className="hero-link" href="mailto:zhm0044@gmail.com">
+              <Mail aria-hidden="true" />
+              {content.hero.emailLabel}
             </a>
             <a
-              href="mailto:zhm0044@gmail.com"
-              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-            <a
+              className="hero-link"
               href="https://www.linkedin.com/in/haoming-zhang-3b8795187/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
             >
-              <Linkedin className="w-6 h-6" />
+              <Linkedin aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              className="hero-link"
+              href="https://github.com/hz1957"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github aria-hidden="true" />
+              GitHub
             </a>
           </div>
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-6 py-20">
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-12 shadow-lg">
-          <h2 className="text-3xl mb-6 text-center">{homeText.about}</h2>
-          <div className="space-y-6 text-slate-700 max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed">{content.hero.bio}</p>
-            {content.trainingWork.slice(0, 2).map((item) => (
-              <p className="text-lg leading-relaxed" key={item.title}>
-                {item.detail}
-              </p>
+      <div className="page-body">
+        <section className="cv-section" id="training">
+          <h2 className="cv-section-title">
+            {content.sections.training}
+            <span className="section-tag">{content.sections.trainingTag}</span>
+          </h2>
+          <div className="cv-entries">
+            {content.trainingWork.map((item) => (
+              <div className="cv-entry" key={item.title}>
+                <div className="cv-entry-meta">{item.title}</div>
+                <div className="cv-entry-body">{item.detail}</div>
+              </div>
             ))}
           </div>
+        </section>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <Link
-              to={`${routePrefix}/experience`}
-              className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
-            >
-              <h3 className="text-xl mb-2 group-hover:text-blue-600 transition-colors">
-                {homeText.experienceTitle}
-              </h3>
-              <p className="text-slate-600 text-sm mb-3">
-                {homeText.experienceDescription}
-              </p>
-              <div className="flex items-center text-blue-600 text-sm">
-                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
-              </div>
-            </Link>
+        {content.agentWork.length > 0 && (
+          <section className="cv-section" id="agents">
+            <h2 className="cv-section-title">{content.sections.agents}</h2>
+            <ul className="plain-bullets">
+              {content.agentWork.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-            <Link
-              to={`${routePrefix}/projects`}
-              className="group bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
-            >
-              <h3 className="text-xl mb-2 group-hover:text-green-600 transition-colors">
-                {homeText.projectsTitle}
-              </h3>
-              <p className="text-slate-600 text-sm mb-3">
-                {homeText.projectsDescription}
-              </p>
-              <div className="flex items-center text-green-600 text-sm">
-                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
+        <section className="cv-section" id="work">
+          <h2 className="cv-section-title">{content.sections.experience}</h2>
+          <div className="exp-entries">
+            {content.experiences.map((item) => (
+              <div className="exp-entry" key={`${item.role}-${item.company}`}>
+                <div className="exp-meta">
+                  <div className="exp-role">{item.role}</div>
+                  <div className="exp-company">
+                    {item.company}
+                    {item.place ? ` / ${item.place}` : ""}
+                  </div>
+                  <span className="exp-period">{item.period}</span>
+                </div>
+                <ul className="exp-points">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </div>
-            </Link>
-
-            <Link
-              to={`${routePrefix}/publications`}
-              className="group bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
-            >
-              <h3 className="text-xl mb-2 group-hover:text-purple-600 transition-colors">
-                {homeText.publicationsTitle}
-              </h3>
-              <p className="text-slate-600 text-sm mb-3">
-                {homeText.publicationsDescription}
-              </p>
-              <div className="flex items-center text-purple-600 text-sm">
-                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
-              </div>
-            </Link>
+            ))}
           </div>
-        </div>
+        </section>
+
+        <section className="cv-section" id="projects">
+          <h2 className="cv-section-title">{content.sections.projects}</h2>
+          <div className="project-entries">
+            {content.projects.map((project) => (
+              <div className="project-entry" key={project.title}>
+                <div className="project-name">
+                  <span>{project.title}</span>
+                  <span className="project-tech">{project.tech}</span>
+                  <div className="project-links">
+                    {project.href && (
+                      <a href={project.href} target="_blank" rel="noopener noreferrer">
+                        <ArrowUpRight aria-hidden="true" />
+                        {content.codeLabel}
+                      </a>
+                    )}
+                    {project.reportHref && (
+                      <a
+                        href={project.reportHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FileText aria-hidden="true" />
+                        {content.reportLabel}
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="project-content">
+                  {project.detail && <p className="project-detail">{project.detail}</p>}
+                  {project.points && (
+                    <ul className="project-points">
+                      {project.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cv-section" id="skills">
+          <h2 className="cv-section-title">{content.sections.skills}</h2>
+          <div className="skill-entries">
+            {content.skillGroups.map((group) => (
+              <div className="skill-entry" key={group.label}>
+                <div className="skill-label">{group.label}</div>
+                <div className="skill-items">{group.items.join(" / ")}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cv-section" id="research">
+          <h2 className="cv-section-title">{content.sections.research}</h2>
+          <div className="edu-pub-grid">
+            <div className="edu-block">
+              <h3>{content.sections.degrees}</h3>
+              <ul className="edu-list">
+                {content.education.map((item) => (
+                  <li key={item.degree}>
+                    <span className="edu-degree">{item.degree}</span>
+                    <span className="edu-school">{item.school}</span>
+                    <span className="edu-school">{item.year}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="pub-block">
+              <h3>{content.sections.articles}</h3>
+              <div className="article-list">
+                <article className="pub-entry">
+                  <p>
+                    Household Transmission of SARS-CoV-2 in the United States:
+                    Living Density, Viral Load, and Disproportionate Impact on
+                    Communities of Color. 2021.
+                  </p>
+                  <a
+                    className="pub-doi"
+                    href="https://doi.org/10.17615/x61s-er87"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BookOpen aria-hidden="true" />
+                    doi:10.17615/x61s-er87
+                  </a>
+                </article>
+                <article className="pub-entry">
+                  <p>
+                    Degrees of Freedom Estimation in the Meta-analysis of
+                    Sensitivity and Specificity in Diagnosis Medicine. 2021.
+                  </p>
+                  <a
+                    className="pub-doi"
+                    href={dofPaperHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FileText aria-hidden="true" />
+                    {content.fullArticleLabel}
+                  </a>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="contact-bar" id="contact">
+        <p className="contact-note">{content.contactNote}</p>
       </div>
     </main>
   );
