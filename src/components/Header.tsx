@@ -8,11 +8,11 @@ type HeaderProps = {
 
 const navItems = {
   en: [
-    ["#training", "Training"],
-    ["#agents", "Agents"],
-    ["#work", "Work"],
+    ["#training", "Highlights"],
+    ["#work", "Experience"],
     ["#projects", "Projects"],
-    ["#research", "Research"],
+    ["#skills", "Skills"],
+    ["#research", "Education & Articles"],
   ],
   zh: [
     ["#training", "亮点"],

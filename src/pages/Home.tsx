@@ -109,47 +109,43 @@ const stars = Array.from({ length: 42 }, (_, index) => {
 
 const trainingWorkEn: TrainingItem[] = [
   {
-    title: "Qwen-Coder SQL specialist",
+    title: "Agentic systems and data automation",
     detail:
-      "LoRA fine tuned a Qwen-Coder SQL model on execution-verified Spider SQL trajectories using DeepSpeed, FlashAttention and activation checkpointing, improving execution accuracy for SQL generation.",
+      "AI engineer combining machine learning, software development, and statistical modeling, focused on architecture and implementation for agentic systems and intelligent data automation platforms with LangGraph, AutoGen, and SGLang.",
   },
   {
-    title: "Trajectory-based RL data pipeline",
+    title: "Statistics-driven AI evaluation",
     detail:
-      "Built a trajectory-based RL pipeline for business ETL tasks, supporting both chain rollouts and multi-branch Tree Search rollouts.",
+      "Proficient in Python, SQL, and R, with experience applying experimental design, statistical evaluation, and error analysis to improve the stability of automated AI workflows.",
   },
   {
-    title: "Execution-reward GRPO",
+    title: "Production LLM performance evaluation",
     detail:
-      "Engineered GRPO post-training in verl with execution-based rewards, comparing reward schemes, KL coefficients, PPO epochs and rollout configurations; Tree Search rollouts improved execution reliability while using fewer rollout resources.",
+      "Evaluates large language models in production settings, including Qwen-Max and DeepSeek V4, with a focus on high-concurrency throughput and tool-calling robustness.",
   },
   {
-    title: "Training-system optimization",
+    title: "End-to-end AI engineering perspective",
     detail:
-      "Optimized the verl/Ray/vLLM post-training pipeline through stage-level profiling, reducing Actor-to-vLLM synchronization latency and actor-update overhead while resolving memory bottlenecks.",
+      "Bridges data processing, model orchestration, system architecture, service deployment, and evaluation to design solutions across model capability, system constraints, and business needs.",
   },
 ];
 
-const agentWorkEn = [
-  "Developed an LLM-powered ETL agent that converts natural-language transformation requirements into executable JSON DAGs for a visual drag-and-drop workflow canvas, supporting both pipeline creation and iterative modification.",
-  "Architected a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
-  "Designed a hybrid RAG pipeline for enterprise knowledge retrieval with MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion and BGE reranking.",
-];
+const agentWorkEn: string[] = [];
 
 const experiencesEn: Experience[] = [
   {
     role: "AI Research Engineer",
     company: "R2.AI",
-    place: "Shanghai",
+    place: "",
     period: "June 2025 - May 2026",
     points: [
-      "Developed an LLM-powered ETL agent for natural-language to executable JSON DAG generation, supporting workflow creation and iterative modification.",
-      "Architected a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback and PySpark validation.",
-      "LoRA fine tuned a Qwen-Coder SQL model on execution-verified Spider SQL trajectories, improving execution accuracy for SQL generation.",
-      "Built trajectory-based RL for business ETL tasks, including chain and multi-branch Tree Search rollouts.",
-      "Engineered GRPO post-training in verl with execution-based rewards and Tree Search rollouts.",
-      "Optimized verl/Ray/vLLM training stages, reducing Actor-to-vLLM synchronization latency and actor-update overhead.",
-      "Designed a hybrid RAG pipeline with MinerU, Milvus-backed BGE retrieval, BM25 recall, RRF fusion and BGE reranking.",
+      "Designed the architecture for an in-development conversation-to-visual ETL platform and its core model post-training, mapping natural-language transformation requirements to executable JSON DAGs for a Figma Make-like generative data transformation system. Owned post-training and evaluation for the Text-to-SQL subagent, enabling non-technical researchers to build complex clinical SDTM data processing workflows.",
+      "Fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%.",
+      "Built and led a trajectory-based reinforcement learning pipeline for business ETL tasks, supporting chain rollouts and multi-branch Tree Search rollouts.",
+      "Implemented GRPO post-training in verl with sandbox execution outcomes as reward signals; tuned reward design, KL penalties, PPO epochs, and rollout configurations while comparing Tree Search and Chain Rollout strategies. Tree GRPO reached 84% accuracy, while optimized chain n=8 maintained 83% with 60% less rollout cost.",
+      "Profiled and optimized a verl/Ray/vLLM distributed training stack, resolving high-concurrency GPU OOM bottlenecks and reducing Actor-to-vLLM synchronization and actor-update latency to improve RL-stage throughput.",
+      "Designed and implemented a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
+      "Designed a hybrid RAG pipeline for enterprise knowledge retrieval integrating MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion, and BGE reranking.",
     ],
   },
   {
@@ -158,21 +154,20 @@ const experiencesEn: Experience[] = [
     place: "Durham, NC",
     period: "July 2021 - Feb 2025",
     points: [
-      "Conducted statistical modeling for oncology clinical trials, building Cox regression, Kaplan-Meier and propensity-score models for large trial cohorts.",
-      "Designed hypothesis testing, linear and generalized linear mixed-effects models, and ANCOVA for neurological clinical trial endpoints.",
-      "Integrated electronic medical records, lab tests and follow-up logs using SQL and R to assess treatment efficacy and safety.",
-      "Developed SQL, R and SAS programs for analysis and visualization, producing regulatory-quality deliverables.",
-      "Authored and reviewed Statistical Analysis Plans while maintaining SDTM and ADaM data standards.",
+      "Conducted statistical modeling for oncology clinical trials, building and maintaining survival models (Cox regression, Kaplan-Meier) and mixed-effects models for over 2,000 patients; handled missing data to support efficacy evaluation and risk prediction.",
+      "Designed and implemented hypothesis testing, A/B testing, linear and generalized linear mixed-effects models, and ANCOVA for neurological clinical trials to analyze cognitive score changes and guide dose adjustment.",
+      "Integrated large-scale data from electronic medical records, lab tests, and follow-up logs using SQL and R to assess treatment efficacy and safety across multiple data sources.",
+      "Developed SQL, R, and SAS programs for data analysis and visualization, producing high-quality deliverables.",
+      "Authored and reviewed Statistical Analysis Plans (SAPs); maintained SDTM and ADaM data standards.",
     ],
   },
   {
     role: "Graduate Research Assistant",
-    company: "UNC",
-    place: "Chapel Hill, NC",
+    company: "University of North Carolina at Chapel Hill",
+    place: "",
     period: "Jan 2021 - May 2021",
     points: [
-      "Analyzed SARS-CoV-2 household transmission risk factors across a North Carolina cohort.",
-      "R data processing, ggplot2 visualizations, mixed-model and ICC analyses.",
+      "Analyzed risk factors for SARS-CoV-2 household transmission in North Carolina (~500 participants); processed data in R, created ggplot2 visualizations, and performed mixed-model and ICC analyses.",
     ],
   },
 ];
@@ -182,38 +177,46 @@ const projectsEn: Project[] = [
     title: "SQL Agent Post-Training",
     tech: "SFT / GRPO / DeepSpeed / vLLM",
     detail:
-      "Open-source post-training project for SQL/DAG generation: execution-verified SFT data, trajectory-based RL, GRPO reward experiments, and system profiling around DeepSpeed, verl/Ray and vLLM.",
+      "Open-source post-training project for SQL/DAG generation, covering execution-verified SFT data, trajectory-based RL, GRPO reward/search ablations, and profiling around DeepSpeed, verl/Ray, and vLLM.",
     href: "https://github.com/hz1957/sql_agent_training",
     reportHref: "https://hz1957.github.io/sql_agent_training/",
   },
   {
-    title: "Predicting Citation Impact of Scientific Papers",
-    tech: "Python / NLP / ML",
-    detail:
-      "Prediction pipeline for estimating scientific paper citation impact from paper-derived signals, with a final report covering data processing, modeling and evaluation.",
+    title: "Open-Source LLM RAG Knowledge Base and Agent System",
+    tech: "Python / UltraRAG / Milvus / FastAPI",
+    points: [
+      "Built an enterprise knowledge-base service on UltraRAG, integrating document ingestion, retrieval, event queues, observability, and OpenAI-compatible external LLM APIs such as DeepSeek.",
+      "Integrated BGE embedding/reranker models and MinerU document parsing for PDF, Word, and Excel ingestion, intelligent chunking, and high-precision semantic embeddings.",
+      "Built a Milvus/MySQL RAG backend with RabbitMQ asynchronous ingestion and FastAPI retrieval APIs, supporting directory-watch and REST triggers for index updates.",
+    ],
+  },
+  {
+    title: "Scientific Paper Citation Impact Prediction",
+    tech: "Python / XGBoost / scikit-learn / NLP",
+    points: [
+      "Built a leakage-safe temporal ML pipeline on ~50K AI/ML papers using text representations, metadata, venue, affiliation, and prior author/reference history, with 2018-2020 training and 2021-2022 held-out testing.",
+      "Evaluated K-Means solutions (k=2-16) on LSA text representations using silhouette score; examined cluster structure with UMAP and t-SNE; selected an interpretable k=8 partition revealing 4x variation in high-impact-paper rates across research topics.",
+      "Evaluated nine leakage-safe feature stacks across Ridge, Random Forest, and XGBoost; the final model recovered 48.3% of high-impact papers within a 10% screening budget.",
+    ],
     href: "https://github.com/hz1957/Predicting-Citation-Impact-of-Scientific-Papers",
     reportHref:
       "https://hz1957.github.io/Predicting-Citation-Impact-of-Scientific-Papers/progress-documents/final/",
   },
   {
-    title: "Human Retina Cell Clustering",
-    tech: "R / Unsupervised ML",
-    detail:
-      "Applied t-SNE/K-means, CCA+Seurat and SAME clustering to classify retinal cell types from scRNA-seq data, validating results with Random Forest and matching benchmark performance.",
-    href: "https://github.com/hz1957/Human-retina-cellular-landscape-clustering",
+    title: "Parameter-Efficient NLP Model Fine-Tuning with Adapters",
+    tech: "Python / RoBERTa / LoRA / Adapter",
+    points: [
+      "Implemented LoRA and bottleneck adapters in RoBERTa using adapter-transformers, reducing trainable parameters by ~99%.",
+      "Tuned hyperparameters across multiple text classification tasks to improve performance while keeping the model lightweight.",
+      "Achieved competitive results on public datasets: SciCite (Macro F1 = 82.8%), IMDB (88.3%), and AG News (94.8%), with up to ~2% accuracy improvement.",
+    ],
   },
   {
-    title: "Degrees-of-Freedom Approximation Comparison",
-    tech: "SAS",
-    detail:
-      "Built a SAS macro and grid search to compare Kenward-Roger and Between-Within approximations across cluster sizes, improving predictive accuracy in a mixed-effects logistic regression meta-analysis context.",
-  },
-  {
-    title: "Fresh Produce Delivery Management System",
-    tech: "Java / Spring Boot / Docker",
-    detail:
-      "Built a delivery management backend from scratch using Java, Spring Boot and REST APIs for order placement, delivery tracking and returns; containerized with Docker and configured Nginx as a load balancer for high-concurrency traffic.",
-    href: "https://github.com/hz1957/Drone-Delivery-Service",
+    title: "Medical NLP Model Fine-Tuning and Productionization",
+    tech: "Python / Chinese-MacBERT / NER",
+    points: [
+      "Fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
+    ],
   },
 ];
 
@@ -232,19 +235,44 @@ const skillGroupsEn: SkillGroup[] = [
       "vLLM",
       "FlashAttention",
       "Activation Checkpointing",
+      "GPU Training/Inference Profiling",
     ],
   },
   {
-    label: "Agentic & Retrieval Systems",
-    items: ["LangGraph", "Tool Calling", "MCP", "Text-to-SQL", "RAG", "Milvus", "BM25"],
+    label: "Agentic & LLM Systems",
+    items: [
+      "LangGraph",
+      "AutoGen",
+      "SGLang",
+      "Tool Calling",
+      "MCP",
+      "Text-to-SQL",
+      "Structured Output",
+      "Execution-Feedback Repair",
+    ],
   },
   {
-    label: "Programming, Data & Infrastructure",
-    items: ["Python", "SQL", "PySpark", "Docker", "AWS", "MySQL", "Redis", "Nginx"],
+    label: "Systems, Data & Infrastructure",
+    items: [
+      "Python",
+      "SQL",
+      "R",
+      "SAS Macro",
+      "Spark/PySpark",
+      "Java",
+      "C++",
+      "Docker",
+      "AWS",
+      "MySQL",
+      "Redis",
+      "NoSQL",
+      "JSON Schema",
+      "Playwright",
+    ],
   },
   {
-    label: "Statistical Computing & Software Development",
-    items: ["R", "SAS", "Java", "Spring Boot"],
+    label: "Product & Agent Skill Packaging",
+    items: ["Figma", "Enterprise Agent Skills Framework"],
   },
 ];
 
@@ -252,17 +280,17 @@ const educationEn: Education[] = [
   {
     degree: "M.S. Computer Science",
     school: "Georgia Institute of Technology",
-    year: "Aug 2023 - Aug 2026",
+    year: "2023 - 2026",
   },
   {
     degree: "M.S. Biostatistics",
     school: "University of North Carolina at Chapel Hill",
-    year: "Aug 2019 - May 2021",
+    year: "2019 - 2021",
   },
   {
     degree: "B.S. Biological Science",
     school: "Nanjing University",
-    year: "Sept 2016",
+    year: "2011 - 2016",
   },
 ];
 
@@ -371,14 +399,11 @@ const projectsZh: Project[] = [
     ],
   },
   {
-    title: "生鲜配送管理系统",
-    tech: "Java / Spring Boot / Docker",
+    title: "医疗 NLP 模型微调与工程化落地",
+    tech: "Python / Chinese-MacBERT / NER",
     points: [
-      "从零到一开发生鲜配送管理网站后端系统，基于 Java、Spring Boot、REST API 实现下单、配送、退货等核心业务功能。",
-      "使用 UML 类图、时序图等方法进行系统设计，合理划分模块职责，提升系统可维护性与扩展性。",
-      "通过 Docker 进行服务容器化部署，支持多实例运行，并结合 Nginx 实现负载均衡与反向代理，以应对高并发场景。",
+      "基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
     ],
-    href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
@@ -467,15 +492,15 @@ const educationZh: Education[] = [
 const portfolioContent: Record<Language, PortfolioContent> = {
   en: {
     hero: {
-      tag: "SFT / GRPO / Agentic Systems",
+      tag: "Agentic AI / LLM Systems / Intelligent Data Automation",
       name: "Haoming Zhang",
       role: "AI Research Engineer | Atlanta, GA",
-      bio: "AI engineer with master's degrees in Computer Science and Biostatistics, specializing in LLM post-training and agentic systems, with hands-on experience across the full agent lifecycle: RL data pipelines and reward modeling, execution-guided optimization and deployment. Brings a strong quantitative foundation from a prior statistics career (4 years designing statistical analysis and survival models for FDA-regulated clinical trials), now applied to evaluation, experimental design, SFT and RL for LLM agents.",
+      bio: "AI engineer with master's degrees in Computer Science and Biostatistics, combining machine learning, software development, and statistical modeling. Focused on agentic systems, LLM post-training, and intelligent data automation platforms, with production LLM performance evaluation experience.",
       emailLabel: "Email",
     },
     sections: {
-      training: "SFT and RL for SQL Generation",
-      trainingTag: "Main thread",
+      training: "Profile Highlights",
+      trainingTag: "Capability snapshot",
       agents: "LLM Agent Systems",
       experience: "Experience",
       projects: "Selected Projects",
@@ -493,7 +518,7 @@ const portfolioContent: Record<Language, PortfolioContent> = {
     codeLabel: "Code",
     reportLabel: "Report",
     fullArticleLabel: "Full article (PDF)",
-    contactNote: "Open to roles in LLM post-training, agentic AI, and evaluation-heavy model systems.",
+    contactNote: "Open to roles in agentic AI, LLM post-training, and intelligent data automation platforms.",
   },
   zh: {
     hero: {

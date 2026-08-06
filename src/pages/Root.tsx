@@ -18,7 +18,7 @@ export default function Root() {
       description.content =
         language === "zh"
           ? "张昊明的个人主页：Agentic AI、大语言模型后训练、智能数据自动化平台、生产模型评测与统计建模。"
-          : "Haoming Zhang portfolio: LLM post-training, agentic systems, reward modeling, execution-guided SQL/DAG generation, and statistical modeling.";
+          : "Haoming Zhang portfolio: agentic AI, LLM post-training, intelligent data automation, production model evaluation, and statistical modeling.";
     }
   }, [language]);
 
@@ -41,7 +41,7 @@ export default function Root() {
           <p>
             {language === "zh"
               ? "专注于智能体系统、大语言模型后训练与智能数据自动化。"
-              : "Built around post-training, LLM agents, and statistical rigor."}
+              : "Built around agentic AI, post-training, data automation, and statistical rigor."}
           </p>
         </div>
       </footer>
