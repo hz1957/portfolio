@@ -145,7 +145,7 @@ const experiencesEn: Experience[] = [
       "Implemented GRPO post-training in verl with sandbox execution outcomes as reward signals; tuned reward design, KL penalties, PPO epochs, and rollout configurations while comparing Tree Search and Chain Rollout strategies. Tree GRPO reached 84% accuracy, while optimized chain n=8 maintained 83% with 60% less rollout cost.",
       "Profiled and optimized a verl/Ray/vLLM distributed training stack, resolving high-concurrency GPU OOM bottlenecks and reducing Actor-to-vLLM synchronization and actor-update latency to improve RL-stage throughput.",
       "Designed and implemented a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
-      "Designed a hybrid RAG pipeline for enterprise knowledge retrieval integrating MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion, and BGE reranking.",
+      "Medical NLP model fine-tuning and productionization: fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
     ],
   },
   {
@@ -212,11 +212,14 @@ const projectsEn: Project[] = [
     ],
   },
   {
-    title: "Medical NLP Model Fine-Tuning and Productionization",
-    tech: "Python / Chinese-MacBERT / NER",
+    title: "Fresh Produce Delivery Management System",
+    tech: "Java / Spring Boot / Docker",
     points: [
-      "Fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
+      "Built a fresh produce delivery management backend from scratch using Java, Spring Boot, and REST APIs for order placement, delivery tracking, and returns processing.",
+      "Used UML class and sequence diagrams for system design, separating module responsibilities to improve maintainability and extensibility.",
+      "Containerized services with Docker and configured Nginx load balancing and reverse proxying to support high-concurrency traffic.",
     ],
+    href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
@@ -331,7 +334,7 @@ const experiencesZh: Experience[] = [
       "构建并主导基于 GRPO 的强化学习流水线（RLVR / RLAIF），在 verl 框架内实现以“沙盒执行结果”为奖励信号的 GRPO 流水线。系统性调优 Reward 机制、KL 惩罚等超参数，并对比多分支 Tree Search 与 Chain Rollout 策略。Tree GRPO 将准确率提升至 84%，优化后的链式 n=8 方案在削减 60% Rollout 开销的情况下仍保持 83%。",
       "针对 verl / Ray / vLLM 混合架构开展分布式训练链路性能剖析，定位并解决高并发下的 OOM 显存瓶颈，大幅缩短 Actor-to-vLLM 状态同步与 Actor Update 延迟，显著提升强化学习阶段的整体吞吐量。",
       "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
-      "设计并搭建面向企业知识检索的混合 RAG 流程，集成 MinerU PDF 解析、基于 Milvus 的 BGE 检索、BM25 召回、RRF 融合及 BGE 重排序。",
+      "医疗 NLP 模型微调与工程化落地：基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
     ],
   },
   {
@@ -399,11 +402,14 @@ const projectsZh: Project[] = [
     ],
   },
   {
-    title: "医疗 NLP 模型微调与工程化落地",
-    tech: "Python / Chinese-MacBERT / NER",
+    title: "生鲜配送管理系统",
+    tech: "Java / Spring Boot / Docker",
     points: [
-      "基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
+      "从零到一开发生鲜配送管理网站后端系统，基于 Java、Spring Boot、REST API 实现下单、配送、退货等核心业务功能。",
+      "使用 UML 类图、时序图等方法进行系统设计，合理划分模块职责，提升系统可维护性与扩展性。",
+      "通过 Docker 进行服务容器化部署，支持多实例运行，并结合 Nginx 实现负载均衡与反向代理，以应对高并发场景。",
     ],
+    href: "https://github.com/hz1957/Drone-Delivery-Service",
   },
 ];
 
