@@ -53,7 +53,7 @@
         "vite": "6.3.5"
     },
     "scripts": {
-        "dev": "vite",
-        "build": "vite build && node scripts/postbuild.mjs"
+        "dev": "node scripts/prebuild.mjs && vite",
+        "build": "node scripts/prebuild.mjs && vite build && node scripts/postbuild.mjs"
     }
 }
