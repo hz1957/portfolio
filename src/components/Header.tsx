@@ -15,10 +15,10 @@ const navItems = {
     ["#research", "Research"],
   ],
   zh: [
-    ["#training", "后训练"],
-    ["#agents", "智能体"],
+    ["#training", "亮点"],
     ["#work", "经历"],
     ["#projects", "项目"],
+    ["#skills", "技能"],
     ["#research", "教育与文章"],
   ],
 } satisfies Record<Language, Array<[string, string]>>;
@@ -37,7 +37,7 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
           <span className="brand-mark">HZ</span>
           <span className="brand-text">
             <span>{isChinese ? "张昊明" : "Haoming Zhang"}</span>
-            <small>{isChinese ? "AI 研究员" : "AI Research Engineer"}</small>
+            <small>{isChinese ? "AI 工程师" : "AI Research Engineer"}</small>
           </span>
         </Link>
 
