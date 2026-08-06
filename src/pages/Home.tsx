@@ -1,11 +1,8 @@
 import { ArrowUpRight, BookOpen, FileText, Github, Linkedin, Mail } from "lucide-react";
-import type { CSSProperties } from "react";
 import { useOutletContext } from "react-router";
 import type { Language, LanguageOutletContext } from "../language";
 
 const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
-
-type StarStyle = CSSProperties & Record<`--${string}`, string>;
 
 type TrainingItem = {
   title: string;
@@ -71,42 +68,6 @@ type PortfolioContent = {
   contactNote: string;
 };
 
-const seeded = (seed: number) => {
-  const value = Math.sin(seed * 12.9898) * 43758.5453;
-  return value - Math.floor(value);
-};
-
-const stars = Array.from({ length: 42 }, (_, index) => {
-  const small = index < 24;
-  const medium = index >= 24 && index < 36;
-  const sizeBase = small ? 1.1 : medium ? 2 : 3.4;
-  const sizeRange = small ? 1.3 : medium ? 1.9 : 3.2;
-  const alphaBase = small ? 0.28 : medium ? 0.36 : 0.42;
-  const alphaRange = small ? 0.38 : medium ? 0.42 : 0.34;
-  const duration = small ? 15 + seeded(index + 1) * 18 : medium ? 12 + seeded(index + 2) * 14 : 9 + seeded(index + 3) * 10;
-  const twinkle = small ? 2.5 + seeded(index + 4) * 3.6 : medium ? 2 + seeded(index + 5) * 3 : 1.8 + seeded(index + 6) * 2.6;
-  const dx = (seeded(index + 7) - 0.5) * (small ? 28 : medium ? 38 : 52);
-  const dy = (seeded(index + 8) - 0.5) * (small ? 22 : medium ? 32 : 42);
-  const style: StarStyle = {
-    "--x": `${seeded(index + 11) * 100}vw`,
-    "--y": `${seeded(index + 23) * 100}vh`,
-    "--size": `${sizeBase + seeded(index + 31) * sizeRange}px`,
-    "--alpha": `${alphaBase + seeded(index + 41) * alphaRange}`,
-    "--duration": `${duration}s`,
-    "--twinkle": `${twinkle}s`,
-    "--delay": `${-seeded(index + 53) * duration}s`,
-    "--twinkle-delay": `${-seeded(index + 61) * twinkle}s`,
-    "--dx": `${dx}px`,
-    "--dy": `${dy}px`,
-    "--glow": `${small ? 0 : medium ? 3 + seeded(index + 71) * 4 : 6 + seeded(index + 83) * 8}px`,
-  };
-
-  return {
-    className: small ? "star star-small" : medium ? "star star-medium" : "star star-large",
-    style,
-  };
-});
-
 const trainingWorkEn: TrainingItem[] = [
   {
     title: "Agentic systems and data automation",
@@ -139,8 +100,8 @@ const experiencesEn: Experience[] = [
     place: "",
     period: "June 2025 - May 2026",
     points: [
-      "Designed the architecture for an in-development conversation-to-visual ETL platform and its core model post-training, mapping natural-language transformation requirements to executable JSON DAGs for a Figma Make-like generative data transformation system. Owned post-training and evaluation for the Text-to-SQL subagent, enabling non-technical researchers to build complex clinical SDTM data processing workflows.",
-      "Fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%.",
+      "Designed the architecture for an in-development conversation-to-visual ETL platform and core agent workflows, mapping natural-language data transformation requirements to executable JSON DAGs for a Figma Make-like data transformation system. The broader orchestration layer used Qwen-Max / DeepSeek V4 for complex task planning, while I owned post-training and evaluation for the Text-to-SQL subagent.",
+      "For the Text-to-SQL subagent, fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%. Migrated the subagent from general LLM calls to the fine-tuned Qwen2.5-Coder-14B inference path, reducing upstream model concurrency pressure and improving single-step output speed by ~4x.",
       "Built and led a trajectory-based reinforcement learning pipeline for business ETL tasks, supporting chain rollouts and multi-branch Tree Search rollouts.",
       "Implemented GRPO post-training in verl with sandbox execution outcomes as reward signals; tuned reward design, KL penalties, PPO epochs, and rollout configurations while comparing Tree Search and Chain Rollout strategies. Tree GRPO reached 84% accuracy, while optimized chain n=8 maintained 83% with 60% less rollout cost.",
       "Profiled and optimized a verl/Ray/vLLM distributed training stack, resolving high-concurrency GPU OOM bottlenecks and reducing Actor-to-vLLM synchronization and actor-update latency to improve RL-stage throughput.",
@@ -329,8 +290,8 @@ const experiencesZh: Experience[] = [
     place: "",
     period: "2025.06 - 2026.05",
     points: [
-      "打造“对话生成可视化” ETL 平台与核心模型后训练。主导设计类 Figma Make 的生成式数据转换系统，设计将自然语言需求高精度映射为可执行 JSON DAG 的整体架构。负责 Text-to-SQL 子智能体的模型后训练与链路评估，使非技术研究人员也可自主搭建复杂的临床 SDTM 数据处理流程。",
-      "基于 LoRA 的大规模语言模型高效微调，依托 4×H100 与 4×H200 GPU 分布式集群，使用经执行验证的 Spider SQL 轨迹高质量数据对 Qwen2.5-Coder-14B 进行指令微调。深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing 等加速技术，将模型 SQL 执行准确率从 68% 提升至 80%。",
+      "打造“对话生成可视化” ETL 平台与核心智能体链路。主导设计类 Figma Make 的生成式数据转换系统，将自然语言数据转换需求映射为可执行 JSON DAG；平台整体编排与复杂任务规划基于 Qwen-Max / DeepSeek V4，重点负责 Text-to-SQL 子智能体的模型后训练与链路评估。",
+      "针对 Text-to-SQL 子智能体，基于 LoRA 的大规模语言模型高效微调，依托 4×H100 与 4×H200 GPU 分布式集群，使用经执行验证的 Spider SQL 轨迹高质量数据对 Qwen2.5-Coder-14B 进行指令微调。深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing 等加速技术，将模型 SQL 执行准确率从 68% 提升至 80%；并将子智能体从通用大模型调用迁移至经微调的 Qwen2.5-Coder-14B 推理链路，降低上游模型并发调用压力，使单步输出速度提升约 4 倍。",
       "构建并主导基于 GRPO 的强化学习流水线（RLVR / RLAIF），在 verl 框架内实现以“沙盒执行结果”为奖励信号的 GRPO 流水线。系统性调优 Reward 机制、KL 惩罚等超参数，并对比多分支 Tree Search 与 Chain Rollout 策略。Tree GRPO 将准确率提升至 84%，优化后的链式 n=8 方案在削减 60% Rollout 开销的情况下仍保持 83%。",
       "针对 verl / Ray / vLLM 混合架构开展分布式训练链路性能剖析，定位并解决高并发下的 OOM 显存瓶颈，大幅缩短 Actor-to-vLLM 状态同步与 Actor Update 延迟，显著提升强化学习阶段的整体吞吐量。",
       "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
@@ -564,12 +525,6 @@ export default function Home() {
 
   return (
     <main className="portfolio-page">
-      <div className="space-field" aria-hidden="true">
-        {stars.map((star, index) => (
-          <span className={star.className} style={star.style} key={index} />
-        ))}
-      </div>
-
       <section className="hero" id="top">
         <div className="hero-inner">
           <span className="hero-tag">{content.hero.tag}</span>
