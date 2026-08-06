@@ -109,24 +109,24 @@ const stars = Array.from({ length: 42 }, (_, index) => {
 
 const trainingWorkEn: TrainingItem[] = [
   {
-    title: "Agentic systems and data automation",
+    title: "Agentic data transformation orchestration",
     detail:
-      "AI engineer combining machine learning, software development, and statistical modeling, focused on architecture and implementation for agentic systems and intelligent data automation platforms with LangGraph, AutoGen, and SGLang.",
+      "Leads conversation-to-visual data transformation platform design, mapping natural-language requirements into executable JSON DAGs for a Figma-Make-style draggable canvas and clinical SDTM workflow automation.",
   },
   {
-    title: "Statistics-driven AI evaluation",
+    title: "Execution-driven SQL agent post-training",
     detail:
-      "Proficient in Python, SQL, and R, with experience applying experimental design, statistical evaluation, and error analysis to improve the stability of automated AI workflows.",
+      "Built GRPO/RLVR post-training pipelines for Qwen2.5-Coder-14B in verl, using execution rewards, rollout strategy tuning, and distributed training optimization to improve SQL execution reliability.",
   },
   {
-    title: "Production LLM performance evaluation",
+    title: "Enterprise RAG and automated trace evaluation",
     detail:
-      "Evaluates large language models in production settings, including Qwen-Max and DeepSeek V4, with a focus on high-concurrency throughput and tool-calling robustness.",
+      "Built UltraRAG-based domain knowledge grounding with Milvus, BGE reranking, and MinerU parsing, plus an LLM-as-Judge trace evaluation framework that reached 88% evaluation accuracy.",
   },
   {
-    title: "End-to-end AI engineering perspective",
+    title: "Statistical AI and clinical data foundation",
     detail:
-      "Bridges data processing, model orchestration, system architecture, service deployment, and evaluation to design solutions across model capability, system constraints, and business needs.",
+      "Combines machine learning, software engineering, and biostatistics across Python, SQL, R, SAS, Spark, and clinical data standards to build reliable AI and data automation systems.",
   },
 ];
 
@@ -139,13 +139,17 @@ const experiencesEn: Experience[] = [
     place: "",
     period: "June 2025 - May 2026",
     points: [
-      "Designed the architecture for an in-development conversation-to-visual ETL platform and its core model post-training, mapping natural-language transformation requirements to executable JSON DAGs for a Figma Make-like generative data transformation system. Owned post-training and evaluation for the Text-to-SQL subagent, enabling non-technical researchers to build complex clinical SDTM data processing workflows.",
-      "Fine-tuned Qwen2.5-Coder-14B with LoRA on execution-verified Spider SQL trajectories across 4xH100 and 4xH200 GPU clusters; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%.",
-      "Built and led a trajectory-based reinforcement learning pipeline for business ETL tasks, supporting chain rollouts and multi-branch Tree Search rollouts.",
-      "Implemented GRPO post-training in verl with sandbox execution outcomes as reward signals; tuned reward design, KL penalties, PPO epochs, and rollout configurations while comparing Tree Search and Chain Rollout strategies. Tree GRPO reached 84% accuracy, while optimized chain n=8 maintained 83% with 60% less rollout cost.",
-      "Profiled and optimized a verl/Ray/vLLM distributed training stack, resolving high-concurrency GPU OOM bottlenecks and reducing Actor-to-vLLM synchronization and actor-update latency to improve RL-stage throughput.",
-      "Designed and implemented a LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, and PySpark validation, enabling autonomous correction of invalid SQL and workflow plans.",
-      "Designed a hybrid RAG pipeline for enterprise knowledge retrieval integrating MinerU PDF parsing, Milvus-backed BGE retrieval, BM25 recall, RRF fusion, and BGE reranking.",
+      "Led the design of a conversation-to-visual data transformation platform, mapping natural-language requirements to executable JSON DAGs for a Figma-Make-style draggable canvas with iterative editing, enabling non-technical researchers to independently build complex clinical SDTM data processing pipelines.",
+      "Owned overall orchestration and complex task planning with DeepSeek V4, and designed a LangGraph-based plan-execute-repair loop as the platform's core execution engine.",
+      "Implemented the LangGraph plan-execute-repair loop with domain-specific tool calling, structured execution feedback, and PySpark validation; introduced constrained decoding plus JSON Schema validation so the system can autonomously correct invalid SQL and workflow plans.",
+      "Built an enterprise-grade RAG knowledge base on UltraRAG, integrating Milvus, BGE embedding/reranker models, and MinerU document parsing to provide domain knowledge grounding for the platform.",
+      "Built an automated trace evaluation framework, decomposing tasks into atomic scoring criteria and using LLM-as-Judge in place of manual review to evaluate generated DAGs and individual node executions, achieving 88% evaluation accuracy.",
+      "Built an execution-reward-driven GRPO (RLVR) post-training pipeline in verl for Qwen2.5-Coder-14B, systematically tuning rewards, KL penalties, and rollout strategies.",
+      "Implemented Tree GRPO with action-prefix state-group normalization, reaching 83.7% SQL execution accuracy (+7.3 pts vs. DeepSeek V4 and about 5x faster single-step response); standard GRPO retained 83% accuracy while cutting rollout overhead by 60%.",
+      "Introduced DAPO Clip-Higher to optimize gradient updates, but observed no significant improvement over the baseline.",
+      "Fine-tuned Qwen2.5-Coder-14B with LoRA on a mixed training set of single-turn execution data and execution-verified SQL trajectories; combined DeepSpeed ZeRO-3, FlashAttention, and activation checkpointing to improve SQL execution accuracy from 68% to 80%.",
+      "Conducted deep performance profiling of the mixed verl/Ray/vLLM distributed training stack, identifying and resolving GPU OOM bottlenecks under high concurrency and reducing Actor-vLLM state synchronization and Actor-Update latency.",
+      "Trained and deployed a Chinese-MacBERT medical named entity recognition model, achieving over 95% token-level accuracy on the CMeEE dataset and establishing a reusable sequence-labeling training and inference pipeline.",
     ],
   },
   {
@@ -177,7 +181,7 @@ const projectsEn: Project[] = [
     title: "SQL Agent Post-Training",
     tech: "SFT / GRPO / DeepSpeed / vLLM",
     detail:
-      "Open-source post-training project for SQL/DAG generation, covering execution-verified SFT data, trajectory-based RL, GRPO reward/search ablations, and profiling around DeepSpeed, verl/Ray, and vLLM.",
+      "Execution-reward-driven post-training work for SQL generation, covering LoRA SFT on mixed execution data and SQL trajectories, GRPO/RLVR in verl, Tree GRPO rollout strategy tuning, and distributed profiling across DeepSpeed, Ray, and vLLM.",
     href: "https://github.com/hz1957/sql_agent_training",
     reportHref: "https://hz1957.github.io/sql_agent_training/",
   },
@@ -185,7 +189,7 @@ const projectsEn: Project[] = [
     title: "Open-Source LLM RAG Knowledge Base and Agent System",
     tech: "Python / UltraRAG / Milvus / FastAPI",
     points: [
-      "Built an enterprise knowledge-base service on UltraRAG, integrating document ingestion, retrieval, event queues, observability, and OpenAI-compatible external LLM APIs such as DeepSeek.",
+      "Built an enterprise knowledge-base service on UltraRAG, integrating document ingestion, retrieval, event queues, observability, and OpenAI-compatible external LLM APIs such as DeepSeek v4.",
       "Integrated BGE embedding/reranker models and MinerU document parsing for PDF, Word, and Excel ingestion, intelligent chunking, and high-precision semantic embeddings.",
       "Built a Milvus/MySQL RAG backend with RabbitMQ asynchronous ingestion and FastAPI retrieval APIs, supporting directory-watch and REST triggers for index updates.",
     ],
@@ -206,16 +210,9 @@ const projectsEn: Project[] = [
     title: "Parameter-Efficient NLP Model Fine-Tuning with Adapters",
     tech: "Python / RoBERTa / LoRA / Adapter",
     points: [
-      "Implemented LoRA and bottleneck adapters in RoBERTa using adapter-transformers, reducing trainable parameters by ~99%.",
+      "Implemented LoRA and bottleneck adapters in RoBERTa using adapter-transformers.",
       "Tuned hyperparameters across multiple text classification tasks to improve performance while keeping the model lightweight.",
       "Achieved competitive results on public datasets: SciCite (Macro F1 = 82.8%), IMDB (88.3%), and AG News (94.8%), with up to ~2% accuracy improvement.",
-    ],
-  },
-  {
-    title: "Medical NLP Model Fine-Tuning and Productionization",
-    tech: "Python / Chinese-MacBERT / NER",
-    points: [
-      "Fine-tuned a Chinese-MacBERT medical named entity recognition (NER) model on the CMeEE dataset, achieving over 95% token-level accuracy and packaging the sequence-labeling training and inference workflow.",
     ],
   },
 ];
@@ -233,8 +230,6 @@ const skillGroupsEn: SkillGroup[] = [
       "FSDP",
       "Ray",
       "vLLM",
-      "FlashAttention",
-      "Activation Checkpointing",
       "GPU Training/Inference Profiling",
     ],
   },
@@ -296,24 +291,24 @@ const educationEn: Education[] = [
 
 const trainingWorkZh: TrainingItem[] = [
   {
-    title: "智能体与数据自动化",
+    title: "智能体驱动的数据转换编排",
     detail:
-      "AI 工程师，兼具机器学习、软件开发与统计建模能力，专注于智能体系统与智能数据自动化平台的架构设计与实现（LangGraph、AutoGen、SGLang）。",
+      "主导设计“对话生成可视化”数据转换平台，将自然语言需求映射为可执行 JSON DAG，服务于类 Figma-Make 的可拖拽画布和临床 SDTM 数据处理流程。",
   },
   {
-    title: "统计驱动的 AI 评估",
+    title: "SQL 子智能体后训练",
     detail:
-      "精通 Python、SQL、R，擅长将实验设计、统计评估与误差分析方法应用于 AI 系统，提升自动化流程的稳定性。",
+      "在 verl 框架中构建执行奖励驱动的 GRPO（RLVR）后训练流程，系统调优 Reward、KL 与 rollout 策略，提升 Qwen2.5-Coder-14B 的 SQL 执行可靠性。",
   },
   {
-    title: "生产模型性能评测",
+    title: "企业级 RAG 与 trace 自动评测",
     detail:
-      "负责大语言模型在生产环境中的性能评测（如 Qwen-Max、DeepSeek V4），重点关注高并发场景下的吞吐效率与工具调用鲁棒性。",
+      "基于 UltraRAG 自建企业级知识库，整合 Milvus、BGE Embedding/Reranker 与 MinerU 文档解析，并构建 LLM-as-Judge trace 评测体系，评测准确率达到 88%。",
   },
   {
-    title: "端到端系统视角",
+    title: "统计与临床数据背景",
     detail:
-      "具备从数据处理、模型编排、系统架构到服务部署与评测的端到端 AI 工程视角，能够在模型能力、系统约束与业务需求之间完成技术方案设计。",
+      "兼具机器学习、软件开发与生物统计建模能力，熟悉 Python、SQL、R、SAS、Spark 与临床数据标准，可将统计严谨性引入 AI 自动化系统。",
   },
 ];
 
@@ -326,12 +321,17 @@ const experiencesZh: Experience[] = [
     place: "",
     period: "2025.06 - 2026.05",
     points: [
-      "打造“对话生成可视化” ETL 平台与核心模型后训练。主导设计类 Figma Make 的生成式数据转换系统，设计将自然语言需求高精度映射为可执行 JSON DAG 的整体架构。负责 Text-to-SQL 子智能体的模型后训练与链路评估，使非技术研究人员也可自主搭建复杂的临床 SDTM 数据处理流程。",
-      "基于 LoRA 的大规模语言模型高效微调，依托 4×H100 与 4×H200 GPU 分布式集群，使用经执行验证的 Spider SQL 轨迹高质量数据对 Qwen2.5-Coder-14B 进行指令微调。深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing 等加速技术，将模型 SQL 执行准确率从 68% 提升至 80%。",
-      "构建并主导基于 GRPO 的强化学习流水线（RLVR / RLAIF），在 verl 框架内实现以“沙盒执行结果”为奖励信号的 GRPO 流水线。系统性调优 Reward 机制、KL 惩罚等超参数，并对比多分支 Tree Search 与 Chain Rollout 策略。Tree GRPO 将准确率提升至 84%，优化后的链式 n=8 方案在削减 60% Rollout 开销的情况下仍保持 83%。",
-      "针对 verl / Ray / vLLM 混合架构开展分布式训练链路性能剖析，定位并解决高并发下的 OOM 显存瓶颈，大幅缩短 Actor-to-vLLM 状态同步与 Actor Update 延迟，显著提升强化学习阶段的整体吞吐量。",
-      "设计并实现基于 LangGraph 的 plan-execute-repair 闭环，结合领域专用工具调用、结构化执行反馈与 PySpark 验证，使系统能够自主修正无效 SQL 和工作流方案。",
-      "设计并搭建面向企业知识检索的混合 RAG 流程，集成 MinerU PDF 解析、基于 Milvus 的 BGE 检索、BM25 召回、RRF 融合及 BGE 重排序。",
+      "主导设计“对话生成可视化”数据转换平台，将自然语言需求高精度映射为可执行 JSON DAG，供类 Figma-Make 的可拖拽画布界面使用并支持迭代修改，使非技术研究人员也可自主搭建复杂的临床 SDTM 数据处理流程。",
+      "负责平台整体编排与复杂任务规划，基于 DeepSeek V4 设计并实现 LangGraph plan-execute-repair 闭环，作为平台核心执行引擎。",
+      "结合领域专用工具调用、结构化执行反馈和 PySpark 验证，引入约束解码与 JSON Schema 双重约束机制，使系统能够自主修正无效 SQL 和工作流方案。",
+      "底层知识检索能力基于 UltraRAG 框架自建企业级 RAG 知识库，整合 Milvus、BGE Embedding/Reranker 与 MinerU 文档解析，为平台提供领域知识支撑。",
+      "构建 trace 自动化评测体系，将任务拆解为原子评分点，采用 LLM-as-Judge 替代人工评估，逐点评估生成 DAG 与各节点执行的准确性，评测准确率达到 88%。",
+      "在 verl 框架中构建执行奖励驱动的 GRPO（RLVR）后训练流程，对 Qwen2.5-Coder-14B 进行后训练，系统调优 Reward、KL 与 rollout 策略。",
+      "Tree GRPO 方案按 action-prefix 状态组归一，SQL 执行准确率达 83.7%，较 DeepSeek V4 提升 7.3 个百分点，单步响应提速约 5 倍；标准 GRPO 方案在削减 60% rollout 开销下仍保持 83%。",
+      "引入 DAPO Clip-Higher 策略优化梯度更新，但相较基线未观察到明显提升。",
+      "基于 LoRA 对 Qwen2.5-Coder-14B 进行大规模语言模型高效微调，混合单轮执行数据与经执行验证的 SQL 轨迹高质量数据构建训练集；深度融合 DeepSpeed ZeRO-3、FlashAttention 及 Activation Checkpointing，将基础模型 SQL 执行准确率从 68% 提升至 80%。",
+      "针对 verl / Ray / vLLM 混合架构开展深度性能剖析，定位并解决高并发下的 OOM 显存瓶颈，缩短 Actor-vLLM 状态同步与 Actor-Update 延迟，显著提升强化学习阶段的整体吞吐量。",
+      "基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀可复用的序列标注训练与推理流程。",
     ],
   },
   {
@@ -363,7 +363,7 @@ const projectsZh: Project[] = [
     title: "SQL 智能体后训练",
     tech: "SFT / GRPO / DeepSpeed / vLLM",
     detail:
-      "面向 SQL/DAG 生成的开源后训练项目，涵盖经执行验证的 SFT 数据、基于轨迹的强化学习、GRPO 奖励与搜索策略对照，以及围绕 DeepSpeed、verl/Ray 和 vLLM 的性能分析与故障诊断。",
+      "面向 SQL 生成的执行奖励驱动后训练项目，涵盖混合单轮执行数据与 SQL 轨迹数据的 LoRA SFT、verl 中的 GRPO/RLVR、Tree GRPO rollout 策略调优，以及围绕 DeepSpeed、Ray 和 vLLM 的分布式性能分析。",
     href: "https://github.com/hz1957/sql_agent_training",
     reportHref: "https://hz1957.github.io/sql_agent_training/",
   },
@@ -371,8 +371,8 @@ const projectsZh: Project[] = [
     title: "开源大模型 RAG 知识库与智能体系统开发",
     tech: "Python / UltraRAG / Milvus / FastAPI",
     points: [
-      "基于 UltraRAG 框架构建企业级知识库服务，通过一套 Docker 模板整合文档写链路、检索链路、事件队列及系统可观测性，并对接兼容 OpenAI 格式的外部大模型 API（如 DeepSeek 等），实现业务系统与生成服务的高效对接。",
-      "集成 BGE 系列 Embedding / Reranker 模型与 MinerU 文档解析引擎，支持 PDF、Word、Excel 等多格式文件的智能解析与分块，构建高精度的语义嵌入服务，提升检索质量。",
+      "基于 UltraRAG 框架构建企业级知识库服务，通过一套 Docker 模板整合文档写链路、检索链路、事件队列及系统可观测性，并对接兼容 OpenAI 格式的外部大模型 API（DeepSeek v4），实现业务系统与生成服务的高效对接。",
+      "集成 BGE 系列 Embedding / Reranker 模型与 MinerU 多模态文档解析，支持多格式图文的智能解析与分块，构建高精度的语义嵌入服务，提升检索质量。",
       "使用 Milvus 向量数据库与 MySQL 搭建垂直领域 RAG 检索后端，结合 RabbitMQ 实现异步文档入库管道，支持通过目录监听（Watch）或 RESTful API 触发知识抽取与索引更新。",
       "采用 FastAPI 暴露标准化检索接口，通过单容器架构高效运行 API、消息网关与后台 Worker，并内置系统可观测性面板与任务调度系统，提升系统可维护性。",
     ],
@@ -399,10 +399,12 @@ const projectsZh: Project[] = [
     ],
   },
   {
-    title: "医疗 NLP 模型微调与工程化落地",
-    tech: "Python / Chinese-MacBERT / NER",
+    title: "生鲜配送管理系统",
+    tech: "Java / Spring Boot / Docker",
     points: [
-      "基于 Chinese-MacBERT 训练医学命名实体识别（NER）模型，在 CMeEE 数据集上实现 95% 以上 token-level 准确率，并沉淀序列标注训练与推理流程。",
+      "从零到一开发生鲜配送管理网站后端系统，基于 Java、Spring Boot、REST API 实现下单、配送、退货等核心业务功能。",
+      "使用 UML 类图、时序图等方法进行系统设计，合理划分模块职责，提升系统可维护性与扩展性。",
+      "通过 Docker 进行服务容器化部署，支持多实例运行，并结合 Nginx 实现负载均衡与反向代理，以应对高并发场景。",
     ],
   },
 ];
@@ -414,6 +416,7 @@ const skillGroupsZh: SkillGroup[] = [
       "监督微调（SFT）",
       "LoRA 参数高效微调",
       "GRPO 与 PPO 策略优化",
+      "GiGPO",
       "奖励建模",
       "基于执行结果的奖励设计",
       "verl 后训练框架",
@@ -495,7 +498,7 @@ const portfolioContent: Record<Language, PortfolioContent> = {
       tag: "Agentic AI / LLM Systems / Intelligent Data Automation",
       name: "Haoming Zhang",
       role: "AI Research Engineer | Atlanta, GA",
-      bio: "AI engineer with master's degrees in Computer Science and Biostatistics, combining machine learning, software development, and statistical modeling. Focused on agentic systems, LLM post-training, and intelligent data automation platforms, with production LLM performance evaluation experience.",
+      bio: "AI research engineer with master's degrees in Computer Science and Biostatistics, combining machine learning, software development, and statistical modeling. Focused on agentic data transformation platforms, LLM post-training, enterprise RAG, automated trace evaluation, and clinical data automation.",
       emailLabel: "Email",
     },
     sections: {
@@ -518,14 +521,14 @@ const portfolioContent: Record<Language, PortfolioContent> = {
     codeLabel: "Code",
     reportLabel: "Report",
     fullArticleLabel: "Full article (PDF)",
-    contactNote: "Open to roles in agentic AI, LLM post-training, and intelligent data automation platforms.",
+    contactNote: "Open to roles in agentic AI, LLM post-training, enterprise RAG, and intelligent data automation platforms.",
   },
   zh: {
     hero: {
       tag: "Agentic AI / 大语言模型系统 / 智能数据自动化",
       name: "张昊明",
       role: "AI 工程师｜上海市长宁区",
-      bio: "AI 工程师，拥有计算机科学与生物统计学双硕士学位，兼具机器学习、软件开发与统计建模能力；专注于智能体系统、模型后训练与智能数据自动化平台，并具备生产环境大语言模型性能评测经验。",
+      bio: "AI 工程师，拥有计算机科学与生物统计学双硕士学位，兼具机器学习、软件开发与统计建模能力；专注于智能体数据转换平台、大语言模型后训练、企业级 RAG、trace 自动评测与临床数据自动化。",
       emailLabel: "邮箱",
     },
     sections: {
@@ -548,7 +551,7 @@ const portfolioContent: Record<Language, PortfolioContent> = {
     codeLabel: "代码",
     reportLabel: "报告",
     fullArticleLabel: "阅读全文（PDF）",
-    contactNote: "求职方向：Agentic AI、大语言模型后训练与智能数据自动化平台。",
+    contactNote: "求职方向：Agentic AI、大语言模型后训练、企业级 RAG 与智能数据自动化平台。",
   },
 };
 

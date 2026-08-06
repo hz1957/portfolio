@@ -17,8 +17,8 @@ export default function Root() {
     if (description) {
       description.content =
         language === "zh"
-          ? "张昊明的个人主页：Agentic AI、大语言模型后训练、智能数据自动化平台、生产模型评测与统计建模。"
-          : "Haoming Zhang portfolio: agentic AI, LLM post-training, intelligent data automation, production model evaluation, and statistical modeling.";
+          ? "张昊明的个人主页：Agentic AI、大语言模型后训练、企业级 RAG、trace 自动评测与智能数据自动化平台。"
+          : "Haoming Zhang portfolio: agentic AI, LLM post-training, enterprise RAG, automated trace evaluation, intelligent data automation, and statistical modeling.";
     }
   }, [language]);
 
@@ -40,8 +40,8 @@ export default function Root() {
           <p>{language === "zh" ? "张昊明 - AI 工程师" : "Haoming Zhang - AI Research Engineer"}</p>
           <p>
             {language === "zh"
-              ? "专注于智能体系统、大语言模型后训练与智能数据自动化。"
-              : "Built around agentic AI, post-training, data automation, and statistical rigor."}
+              ? "专注于智能体系统、大语言模型后训练、企业级 RAG 与智能数据自动化。"
+              : "Built around agentic AI, post-training, enterprise RAG, data automation, and statistical rigor."}
           </p>
         </div>
       </footer>
