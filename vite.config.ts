@@ -53,6 +53,11 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'build',
+    rollupOptions: {
+      input: {
+        index: path.resolve(__dirname, 'vite-entry.html'),
+      },
+    },
   },
   server: {
     port: 3000,

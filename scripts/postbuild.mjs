@@ -1,9 +1,10 @@
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
 const englishUrl = "https://hz1957.github.io/portfolio/";
 const chineseUrl = "https://hz1957.github.io/portfolio/zh/";
+const viteOutputPath = "build/vite-entry.html";
 const outputPath = "build/index.html";
-const sourceHtml = await readFile(outputPath, "utf8");
+const sourceHtml = await readFile(viteOutputPath, "utf8");
 
 const addLanguageLinks = (html, canonicalUrl) =>
   html.replace(
@@ -31,3 +32,4 @@ await mkdir("build/zh", { recursive: true });
 await writeFile(outputPath, englishHtml);
 await writeFile("build/zh/index.html", chineseHtml);
 await copyFile(outputPath, "build/404.html");
+await rm(viteOutputPath, { force: true });
