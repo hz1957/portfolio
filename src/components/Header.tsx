@@ -1,4 +1,5 @@
 import type { Language } from "../language";
+import { Link } from "react-router";
 
 type HeaderProps = {
   language: Language;
@@ -28,8 +29,8 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
   return (
     <header className="site-header">
       <nav className="header-inner" aria-label={isChinese ? "主导航" : "Primary"}>
-        <a
-          href={import.meta.env.BASE_URL}
+        <Link
+          to={isChinese ? "/zh/" : "/"}
           className="brand-link"
           aria-label={isChinese ? "张昊明主页" : "Haoming Zhang home"}
         >
@@ -38,7 +39,7 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
             <span>{isChinese ? "张昊明" : "Haoming Zhang"}</span>
             <small>{isChinese ? "AI 研究员" : "AI Research Engineer"}</small>
           </span>
-        </a>
+        </Link>
 
         <div className="main-nav">
           {navItems[language].map(([href, label]) => (

@@ -54,6 +54,6 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "vite build && node -e \"require('fs').copyFileSync('build/index.html','build/404.html')\""
+        "build": "vite build && node scripts/postbuild.mjs"
     }
 }
