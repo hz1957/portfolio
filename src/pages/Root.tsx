@@ -37,17 +37,15 @@ export default function Root() {
   };
 
   return (
-    <div className="portfolio-root">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <ScrollToTop />
       <Header language={language} onLanguageChange={handleLanguageChange} />
       <Outlet context={{ language }} />
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <p>{language === "zh" ? "张昊明 - AI 工程师" : "Haoming Zhang - AI Research Engineer"}</p>
+      <footer className="bg-slate-900 text-slate-400 py-8 mt-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
           <p>
-            {language === "zh"
-              ? "专注于智能体系统、大语言模型后训练与智能数据自动化。"
-              : "Built around agentic AI, post-training, data automation, and statistical rigor."}
+            &copy; 2026 {language === "zh" ? "张昊明" : "Haoming Zhang"}.{" "}
+            {language === "zh" ? "保留所有权利。" : "All rights reserved."}
           </p>
         </div>
       </footer>

@@ -1,5 +1,6 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { Link, useOutletContext } from "react-router";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import type { Language, LanguageOutletContext } from "../language";
 
 export const dofPaperHref = `${import.meta.env.BASE_URL}degrees-of-freedom-estimation.pdf`;
@@ -523,80 +524,128 @@ export default function Home() {
   const { language } = useOutletContext<LanguageOutletContext>();
   const content = portfolioContent[language];
   const routePrefix = language === "zh" ? "/zh" : "";
+  const isChinese = language === "zh";
+  const homeText = {
+    about: isChinese ? "关于我" : "About Me",
+    experienceTitle: content.sections.experience,
+    experienceDescription: isChinese ? "查看我的专业经历" : "Explore my professional journey",
+    projectsTitle: content.sections.projects,
+    projectsDescription: isChinese ? "查看我的项目作品" : "View my portfolio",
+    publicationsTitle: content.sections.research,
+    publicationsDescription: isChinese ? "查看教育背景与研究文章" : "Read my education and research work",
+    learnMore: isChinese ? "了解更多" : "Learn more",
+  };
 
   return (
-    <main className="portfolio-page">
-      <section className="hero" id="top">
-        <div className="hero-inner">
-          <span className="hero-tag">{content.hero.tag}</span>
-          <h1>{content.hero.name}</h1>
-          <p className="hero-role">{content.hero.role}</p>
-          <p className="hero-bio">{content.hero.bio}</p>
-          <div className="hero-links">
-            <a className="hero-link" href="mailto:zhm0044@gmail.com">
-              <Mail aria-hidden="true" />
-              {content.hero.emailLabel}
-            </a>
+    <main>
+      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1749068372456-5567c4a6bd49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYWJzdHJhY3QlMjBncmFkaWVudHxlbnwxfHx8fDE3NjQ4NDk5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-50" />
+        </div>
+
+        <div className="relative z-10 text-center space-y-6 px-6 py-20">
+          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-5xl shadow-2xl">
+            HZ
+          </div>
+          <div>
+            <h1 className="text-5xl mb-4 text-white drop-shadow-lg">
+              {content.hero.name}
+            </h1>
+            <p className="text-xl text-slate-100 max-w-2xl mx-auto drop-shadow-md">
+              {content.hero.role}
+            </p>
+          </div>
+          <div className="flex justify-center gap-4">
             <a
-              className="hero-link"
-              href="https://www.linkedin.com/in/haoming-zhang-3b8795187/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin aria-hidden="true" />
-              LinkedIn
-            </a>
-            <a
-              className="hero-link"
               href="https://github.com/hz1957"
               target="_blank"
               rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
             >
-              <Github aria-hidden="true" />
-              GitHub
+              <Github className="w-6 h-6" />
+            </a>
+            <a
+              href="mailto:zhm0044@gmail.com"
+              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
+            >
+              <Mail className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/haoming-zhang-3b8795187/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow hover:scale-110 transition-transform"
+            >
+              <Linkedin className="w-6 h-6" />
             </a>
           </div>
         </div>
       </section>
 
-      <div className="page-body">
-        <section className="cv-section" id="training">
-          <h2 className="cv-section-title">
-            {content.sections.training}
-            <span className="section-tag">{content.sections.trainingTag}</span>
-          </h2>
-          <div className="cv-entries">
-            {content.trainingWork.map((item) => (
-              <div className="cv-entry" key={item.title}>
-                <div className="cv-entry-meta">{item.title}</div>
-                <div className="cv-entry-body">{item.detail}</div>
-              </div>
+      <div className="max-w-5xl mx-auto px-6 py-20">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-12 shadow-lg">
+          <h2 className="text-3xl mb-6 text-center">{homeText.about}</h2>
+          <div className="space-y-6 text-slate-700 max-w-3xl mx-auto">
+            <p className="text-lg leading-relaxed">{content.hero.bio}</p>
+            {content.trainingWork.slice(0, 2).map((item) => (
+              <p className="text-lg leading-relaxed" key={item.title}>
+                {item.detail}
+              </p>
             ))}
           </div>
-        </section>
 
-        {content.agentWork.length > 0 && (
-          <section className="cv-section" id="agents">
-            <h2 className="cv-section-title">{content.sections.agents}</h2>
-            <ul className="plain-bullets">
-              {content.agentWork.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
-        )}
+          <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <Link
+              to={`${routePrefix}/experience`}
+              className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
+            >
+              <h3 className="text-xl mb-2 group-hover:text-blue-600 transition-colors">
+                {homeText.experienceTitle}
+              </h3>
+              <p className="text-slate-600 text-sm mb-3">
+                {homeText.experienceDescription}
+              </p>
+              <div className="flex items-center text-blue-600 text-sm">
+                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+            </Link>
 
-        <section className="cv-section" id="pages">
-          <div className="home-route-links">
-            <Link to={`${routePrefix}/experience`}>{content.sections.experience}</Link>
-            <Link to={`${routePrefix}/projects`}>{content.sections.projects}</Link>
-            <Link to={`${routePrefix}/publications`}>{content.sections.research}</Link>
+            <Link
+              to={`${routePrefix}/projects`}
+              className="group bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
+            >
+              <h3 className="text-xl mb-2 group-hover:text-green-600 transition-colors">
+                {homeText.projectsTitle}
+              </h3>
+              <p className="text-slate-600 text-sm mb-3">
+                {homeText.projectsDescription}
+              </p>
+              <div className="flex items-center text-green-600 text-sm">
+                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+            </Link>
+
+            <Link
+              to={`${routePrefix}/publications`}
+              className="group bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105"
+            >
+              <h3 className="text-xl mb-2 group-hover:text-purple-600 transition-colors">
+                {homeText.publicationsTitle}
+              </h3>
+              <p className="text-slate-600 text-sm mb-3">
+                {homeText.publicationsDescription}
+              </p>
+              <div className="flex items-center text-purple-600 text-sm">
+                {homeText.learnMore} <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+            </Link>
           </div>
-        </section>
-      </div>
-
-      <div className="contact-bar" id="contact">
-        <p className="contact-note">{content.contactNote}</p>
+        </div>
       </div>
     </main>
   );
