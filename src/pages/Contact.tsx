@@ -7,6 +7,7 @@ export default function Contact() {
   const { language } = useOutletContext<LanguageOutletContext>();
   const content = portfolioContent[language];
   const isChinese = language === "zh";
+  const locationLabel = content.hero.role.split(/[|｜]/)[1]?.trim() ?? content.hero.role;
   const labels = {
     title: isChinese ? "联系我" : "Get in Touch",
     intro: content.contactNote,
@@ -88,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-1">{labels.location}</h3>
-                  <p className="text-slate-600 text-sm">{content.hero.role.split("|")[1]?.trim() ?? content.hero.role}</p>
+                  <p className="text-slate-600 text-sm">{locationLabel}</p>
                 </div>
               </div>
             </div>
